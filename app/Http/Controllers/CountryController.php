@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Contentable;
 use App\Country;
+use App\Http\Controllers\PhotoController;
 use Illuminate\Http\Request;
 use Response;
 
@@ -63,32 +65,46 @@ class CountryController extends Controller
     {
         //
         $param = json_decode($request->data);
-        $country = new Country();
+        $country = new Country;
         $country->name = $param->country_name;
         $country->short_name = $param->country_name;
 
         $flag = $request->flag;
         $cover = $request->cover;
 
-        $fileName = time() . '-' . $flag->getClientOriginalName();
-        
-        $img = Image::make($flag->getRealPath());
-        $img->save(public_path() 
-                . '/images/news/' 
-                . $fileName);
-            array_push($newPhotos, array(
-                'url' => stripslashes(App::make('url')->to('/') . '/images/news/' . $fileName), 
-                'thumbnail_url' => stripslashes(App::make('url')->to('/') . '/images/news/' . $fileName),
-                'delete_url' => App::make('url')->to('/') . '/photo/delete/' . $fileName,
-                'delete_type' => 'DELETE'
-        ));
+        $country->flag_url = PhotoController::savePhoto($flag, 'country');
+        $country->cover_url = PhotoController::savePhoto($cover, 'country');
+        $country->save();
 
-        dd($request->all());
+        $country->countryInformation()->attach($this->createContent($country, $param->country_info)->id, [
+            'info_id' => 1
+        ]);
+
+        $country->countryEducation()->attach($this->createContent($country, $param->country_education)->id, [
+            'info_id' => 2
+        ]);
+
+        $country->countryVisa()->attach($this->createContent($country, $param->country_visa)->id, [
+            'info_id' => 3
+        ]);
+
+        return Response::json([
+            'code' => 0,
+            'country' => $country,
+            'message' => 'Амжилттай бүртгэлээ.',
+        ]);
     }
 
-    public function savePhoto()
+    public function createContent($country, $data)
     {
-        
+        $content = new Contentable;
+        $content->contentable_id = $country->id;
+        $content->contentable_type = get_class($country);
+        $content->content = stripslashes($data); 
+
+        $content->save();
+
+        return $content;        
     }
 
     /**
