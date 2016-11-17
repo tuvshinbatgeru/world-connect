@@ -1,0 +1,132 @@
+<script>
+	import ModifyNews from './modified/ModifyNews.vue'
+
+	export default {
+		props : {
+			title : {},
+		},
+
+		data () {
+			return {
+				information : [],
+				showNewsModify : false,
+				selectedNews : {},
+				newsInstance : {}
+			}
+		},
+
+		created : function () {
+			this.getNews()
+		},
+
+		filters : {
+			newsFilter : function (value) {
+				debugger
+				var parsed = parseInt(value)
+				switch (parsed) {
+					case 1: 
+						return 'Мэдээлэл'
+					case 2:
+						return 'Тэтгэлэг'
+					case 3: 
+						return 'Зар'
+					case 4:
+						return 'Сургалт'
+				}
+			}
+		},
+
+		methods : {
+			getNews : function () {
+				this.$http.get(this.$env.get('APP_URI') + 'admin/news/list').then(res => {
+				  	this.information = res.data.result.data
+				}).catch(err => {
+				});
+			},
+
+			cancelNews : function () {
+				this.showNewsModify = false
+			},
+
+			editNews : function (data) {
+				this.$http.post(
+					this.$env.get('APP_URI') + 'admin/news/' 
+					+ this.selectedNews.id + '?data=' + data.param, 
+					data.formData
+				).then(res => {
+					if(res.data.code == 0) {
+						this.newsInstance.title = res.data.result.title
+						this.newsInstance.type = res.data.result.type
+
+						this.showNewsModify = false		
+						this.$root.$refs.notify.notify(res.data.message,{
+							closeable : false
+						})
+					}
+				}).catch(err => {
+					this.$root.$refs.notify.notify('Хадгалах явцад алдаа.',{
+						closeable : false
+					})
+				});
+			},
+
+			saveNews : function (data) {
+				this.$http.post(
+					this.$env.get('APP_URI') + 'admin/news?data=' + data.param
+				).then(res => {
+					if(res.data.code == 0) {
+						this.information.push(res.data.result)
+
+						this.showNewsModify = false		
+						this.$root.$refs.notify.notify(res.data.message,{
+							closeable : false
+						})
+					}
+				}).catch(err => {
+					this.$root.$refs.notify.notify('Хадгалах явцад алдаа.',{
+						closeable : false
+					})
+				});
+			},
+
+			newNews: function () {
+				this.showNewsModify = true
+				this.selectedNews = null
+			},
+
+			setNews : function (news) {
+				this.selectedNews = news
+			},
+
+			updateNews : function (news) {
+				this.newsInstance = news
+				this.$http.get(this.$env.get('APP_URI') + 'admin/news/' + news.id + '/edit').then(res => {
+				  	this.selectedNews = res.data.result
+				  	this.showNewsModify = true
+				}).catch(err => {
+
+				});
+			},
+
+			deleteNews : function () {
+				this.$http.delete(this.$env.get('APP_URI') + 'admin/news/' + this.selectedNews.id).then(res => {
+					if(res.data.code == 0) {
+						this.information.$remove(this.selectedNews)
+					}
+
+					this.$root.$refs.notify.notify(res.data.message,{
+						closeable : false
+					})
+
+				}).catch(err => {
+					this.$root.$refs.notify.notify("Устгах явцад алдаа гарлаа.",{
+						closeable : false
+					})
+				})
+			},
+		},
+		components : {
+			ModifyNews
+		}
+	}
+</script>
