@@ -1,6 +1,7 @@
 <script>
 	import DashboardView from "../components/DashboardView.vue"
 	import CountryView from "../components/CountryView.vue"
+	import SchoolView from "../components/SchoolView.vue"
 
 	export default {
 		props : {
@@ -25,7 +26,7 @@
 			}
 		},
 		components : {
-			DashboardView, CountryView
+			DashboardView, CountryView, SchoolView
 		}
 	}
 </script>
