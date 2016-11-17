@@ -12,6 +12,8 @@ window.$ = window.jQuery = require('jquery');
 
 require('bootstrap-sass');
 
+
+
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces
  * using reactive data binding and reusable components. Vue's API is clean
@@ -19,6 +21,12 @@ require('bootstrap-sass');
  */
 
 window.Vue = require('vue');
+
+const moment = require('moment')
+require('moment/locale/en-au')
+
+Vue.use(require('vue-moment'), { moment })
+
 require('vue-resource');
 require('./bootstrap-checkbox-radio-switch')
 require('./bootstrap-notify')

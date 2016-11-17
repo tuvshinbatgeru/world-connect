@@ -15,6 +15,8 @@ require('./admin-bootstrap');
 
 import AdminView from './web/AdminView.vue'
 import CountryView from './components/CountryView.vue'
+import SchoolView from './components/SchoolView.vue'
+import NewsView from './components/NewsView.vue'
 
 Vue.config.debug = true
 Vue.config.devtools = true
@@ -25,6 +27,6 @@ const app = new Vue({
     el: 'body',
 
     components : {
-    	AdminView, CountryView
+    	AdminView, CountryView, SchoolView, NewsView
     }
 });
