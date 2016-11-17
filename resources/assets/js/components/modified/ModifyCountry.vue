@@ -37,7 +37,10 @@
 							<div class="col-md-12">
 								<div class="form-group">
 									<label>Улсын мэдээлэл</label>
-									<custom-editor v-ref:info :titleable="false"></custom-editor>
+									<custom-editor v-ref:info 
+									              :titleable="false" 
+									              :html="getEditorContent('info')">
+									</custom-editor>
 								</div>
 							</div>
 						</div>
@@ -45,7 +48,10 @@
 							<div class="col-md-12">
 								<div class="form-group">
 									<label>Боловсролын систем</label>
-									<custom-editor v-ref:education :titleable="false"></custom-editor>
+									<custom-editor v-ref:education 
+												   :titleable="false"
+												   :html="getEditorContent('education')">
+									</custom-editor>
 								</div>
 							</div>
 						</div>
@@ -53,7 +59,10 @@
 							<div class="col-md-12">
 								<div class="form-group">
 									<label>Визний мэдээлэл</label>
-									<custom-editor v-ref:visa :titleable="false"></custom-editor>
+									<custom-editor v-ref:visa 
+									               :titleable="false"
+									               :html="getEditorContent('visa')">
+									</custom-editor>
 								</div>
 							</div>
 						</div>
@@ -77,6 +86,10 @@
 </template>
 <script>
 	export default {
+		props : {
+			editable : {}
+		},
+
 		data () {
 			return {
 				country : {
@@ -112,12 +125,41 @@
 
 		    $(".main-panel").scroll(this.scrolled)
 
+		    if(this.editable) {
+				this.setData()
+			}
 		},
 
 		methods : {
+			setData : function () {
+				this.country.name = this.editable.name
+				$('#flagImage').attr("src", this.editable.flag_url)
+				$('#backImage').attr("src", this.editable.cover_url)
+
+			},
+
+			getEditorContent : function (type) {
+				if(!this.editable) {
+					return
+				}
+
+				switch(type) {
+					case "info" : 
+						return this.editable.country_information[0].content
+						break
+					case "education" : 
+						return this.editable.country_education[0].content
+						break
+					case "visa" : 
+						return this.editable.country_visa[0].content
+						break
+				}
+			},
+
 			getMenu : function (menu) {
 				return this.menu == menu ? 'active' : ''
 			},
+
 			toggleClass : function (menu) {
 				this.menu = menu
 			},
@@ -166,14 +208,14 @@
 		            return
 				}
 
-				if(!$('#flagId')[0].files[0]) {
+				if(!$('#flagId')[0].files[0] && !this.editable) {
 					this.$root.$refs.notify.notify('Улсын далбаа сонгоно уу!', {
 						closeable : false
 					})
 		            return
 				}
 
-				if(!$('#backId')[0].files[0]) {
+				if(!$('#backId')[0].files[0] && !this.editable) {
 					this.$root.$refs.notify.notify('Улсын арын зураг сонгоно уу!', {
 						closeable : false
 					})
@@ -181,12 +223,16 @@
 				}
 
 				this.$http.get(this.$env.get('APP_URI') + 'admin/country/check?name=' + this.country.name).then(res => {
-				  	if(res.data.code == 0) {
+				  	if(res.data.code == 0 || (this.editable && this.editable.name == this.country.name)) {
+				  		var fd = new FormData()
+
 				  		debugger
 
-				  		var fd = new FormData();    
-						fd.append('flag', $('#flagId')[0].files[0]);
-						fd.append('cover', $('#backId')[0].files[0]);
+				  		if($('#flagId')[0].files[0])
+							fd.append('flag', $('#flagId')[0].files[0])
+
+						if($('#backId')[0].files[0])
+							fd.append('cover', $('#backId')[0].files[0])
 						
 						var data = {
 							country : this.country,
@@ -200,7 +246,10 @@
 						};
 
 
-						this.$emit('save', data)  		
+						if(this.editable)
+							this.$emit('update', data)
+						else
+							this.$emit('save', data)  		
 						return
 				  	}
 
