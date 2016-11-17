@@ -3,7 +3,8 @@
 		<input v-model="title" placeholder="гарчиг" />
 	</div>
 	<div class="editable" :id="id">
-			
+		{{{html}}}
+		123123
 	</div>
 </template>
 <script>
@@ -12,6 +13,10 @@
 	export default {
 		props : {
 			title : {
+
+			},
+
+			html : {
 
 			},
 
@@ -76,10 +81,11 @@
 		        		label: '<span class="fa fa-youtube-play"></span>',
 		            	placeholder: 'YouTube, Vimeo, Facebook, Twitter эсвэл Instagram холбоос хуулах',
 		            	oembedProxy : null,
-		            	//oembedProxy : 'http://medium.iframe.ly/api/oembed?iframe=1'
 		        	}
 		        },
 		    })
+
+		    $('#' + this.id).html(this.html)
 		},
 
 		methods : {
