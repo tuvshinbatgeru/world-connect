@@ -1,13 +1,37 @@
 @extends('layouts.admin-layout', ['currentView' => 'country-view'])
 @section('content')	
 
-	<modify-country v-if="showCountryModify" @cancel="cancelCountry" @save="saveCountry">
+	<modify-country v-if="showCountryModify" 
+					:editable.sync="selectedCountry" 
+					@save="saveCountry"
+					@update="editCountry"
+					@cancel="cancelCountry">
 		
 	</modify-country>
 
+    <div id="myModal1" class="modal" data-easein="fadeIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title" id="myModalLabel">Анхааруулга</h4>
+          </div>
+          <div class="modal-body">
+          	<span>Та</span>
+          	<strong>"@{{selectedCountry.name}}"</strong>
+            <span>улсыг устгахдаа итгэлтэй байна уу?</span>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-danger btn-fill" data-dismiss="modal" aria-hidden="true">Үгүй</button>
+            <button @click="deleteCountry()" data-dismiss="modal" aria-hidden="true" class="btn btn-success btn-fill">Тийм</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
 	<div v-show="!showCountryModify">
 		<div class="col-md-12">
-			<a @click="showCountryModify = true" class="btn btn-info btn-fill">
+			<a @click="newCountry()" class="btn btn-info btn-fill">
 				Нэмэх
 			</a>	
 		</div>
@@ -28,21 +52,20 @@
 		                <tbody>
 							<tr v-for="country in countries">
 		                    	<td>@{{country.name}}</td>
-		                    	<td>Далбаа</td>
+		                    	<td><img style="heigth:32px; width: 32px;" :src="country.flag_url"/></td>
 		                    	<td>
-		                    		<a>
+		                    		<a @click="updateCountry(country)">
 		                    			<i class="fa fa-edit"></i>
 		                    		</a>
 		                    	</td>
 		                    	<td>
-		                    		<a>
+		                    		<a @click="setCountry(country)" href="#myModal1" data-target="#myModal1" data-toggle="modal">
 		                    			<i class="fa fa-trash"></i>
 		                    		</a>
 		                    	</td>
 		                    </tr>   	
 		                </tbody>
 		            </table>
-
 		        </div>
 		    </div>
 		</div>
