@@ -17,6 +17,7 @@ class CreateSchoolTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('logo_url');
+            $table->string('cover_url');
             $table->integer('country_id')->unsigned()->index();
             $table->timestamps();
         });

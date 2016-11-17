@@ -14,6 +14,7 @@ class CreateContentableTable extends Migration
     public function up()
     {
         Schema::create('contentable', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('contentable_id');
             $table->string('contentable_type');
             $table->text('content');

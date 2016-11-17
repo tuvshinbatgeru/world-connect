@@ -15,10 +15,10 @@ class CreateSchoolLevelTable extends Migration
     {
         Schema::create('school_level', function (Blueprint $table) {
             $table->integer('school_id')->unsigned()->index();
-            $table->tinyInteger('level_id');
+            $table->tinyInteger('degree_id');
             $table->timestamps();
 
-            $table->primary(['school_id', 'level_id']);
+            $table->primary(['school_id', 'degree_id']);
         });
     }
 
