@@ -39,7 +39,7 @@
 	                        <p>Мэдээлэл</p>
 	                    </a>
 	                </li>
-	                <li class="{{$currentView == 'alb-view' ? 'active' : ''}}">
+	                <li class="{{$currentView == 'album-view' ? 'active' : ''}}">
 	                    <a href="/admin/album">
 	                        <i class="pe-7s-graph"></i>
 	                        <p>Зургийн цомог</p>
@@ -49,7 +49,7 @@
 	    	</div>
 	    </div>
 
-	    <div class="main-panel" style="position: relative;">
+	    <div class="main-panel">
 	        <nav class="navbar navbar-default navbar-fixed">
 	            <div class="container-fluid">
 	                <div class="navbar-header">
@@ -114,6 +114,7 @@
 	</div>
 	<core-notify v-ref:notify>
 	</core-notify>
+
 	@include('includes.admin-script')
 </body>
 </html>
