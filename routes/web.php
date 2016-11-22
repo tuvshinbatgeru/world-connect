@@ -19,6 +19,8 @@ Route::get('/admin', function () {
 	return view('admin.index');
 });
 
+Route::get('/news', 'NewsController@news');
+
 Route::group(['prefix' => '/admin'], function () {
 	Route::get('/dashboard', 'AdminController@dashboard');
 	Route::get('/country/list', 'CountryController@list');
@@ -38,4 +40,11 @@ Route::group(['prefix' => '/admin'], function () {
 	Route::get('/news/list', 'NewsController@list');
 	Route::post('/news/{news}', 'NewsController@update');
 	Route::resource('/news', 'NewsController');
+
+	Route::get('/album/list', 'AlbumController@list');
+	Route::get('/album/check', 'AlbumController@check');
+	Route::post('/album/photo', 'AlbumController@uploadPhotos');
+	Route::post('/album/{album}', 'AlbumController@update');
+	Route::resource('/album', 'AlbumController');
+	Route::delete('/album/photo/{photo}', 'AlbumController@deletePhoto');
 });
