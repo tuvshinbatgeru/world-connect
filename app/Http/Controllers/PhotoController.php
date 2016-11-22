@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 
 class PhotoController extends Controller
@@ -18,5 +19,13 @@ class PhotoController extends Controller
                 . $fileName);
 
         return \App::make('url')->to('/') . '/images/'. $type .'/' . $fileName;
+    }
+
+    static public function deletePhoto($photo)
+    {
+        $filePath = public_path() 
+                          . '/images' 
+                          . explode('images', $photo->url)[1];
+        File::delete($filePath);
     }
 }

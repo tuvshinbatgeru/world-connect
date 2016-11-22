@@ -21,12 +21,26 @@ class NewsController extends Controller
         return view('admin.news.index');
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        $news = News::latest()->paginate(10);
+        if(isset($request->type)) {
+            $news = News::where('type', $request->type)->latest()->paginate(10);
+        }
+        else $news = News::latest()->paginate(10);
+        
         return Response::json([
             'code' => 0,
             'result' => $news
+        ]);
+    }
+
+    public function news(Request $request)
+    {
+        $news = News::with('info')->limit(5)->get();
+
+        return Response::json([
+            'code' => 0,
+            'result' => $news,
         ]);
     }
 

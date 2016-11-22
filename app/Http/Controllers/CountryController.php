@@ -6,6 +6,7 @@ use App\Contentable;
 use App\Country;
 use App\Http\Controllers\PhotoController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Response;
 
 class CountryController extends Controller
@@ -20,9 +21,18 @@ class CountryController extends Controller
         return view('admin.country.index');
     }
 
+    public function counties()
+    {
+        $countries = Country::all();
+        return Response::json([
+            'code' => 0,
+            'result' => $countries
+        ]);
+    }
+
     public function list()
     {
-        $countries = Country::paginate(5);
+        $countries = Country::latest()->paginate(25);
         return Response::json([
             'code' => 0,
             'result' => $countries
@@ -124,9 +134,17 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Country $country)
     {
         //
+        $country->countryInformation;
+        $country->countryEducation;
+        $country->countryVisa;
+
+        return Response::json([
+            'code' => 0,
+            'result' => $country,
+        ]);
     }
 
     /**
@@ -139,6 +157,44 @@ class CountryController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $param = json_decode($request->data);
+        $country = Country::find($id);
+        $country->name = $param->country_name;
+        $country->short_name = $param->country_name;
+
+        $flag = $request->flag;
+        $cover = $request->cover;
+
+        if($flag) {
+            $country->flag_url = PhotoController::savePhoto($flag, 'country');
+        }
+
+        if($cover) {
+            $country->cover_url = PhotoController::savePhoto($cover, 'country');
+        }
+        
+        $country->save();
+        
+        DB::table('country_info')->where('country_id', $id)->delete();
+        DB::table('contentable')->where('contentable_id', $country->id)->where('contentable_type', 'App\\Country')->delete();
+
+        $country->countryInformation()->attach($this->createContent($country, $param->country_info)->id, [
+            'info_id' => 1
+        ]);
+
+        $country->countryEducation()->attach($this->createContent($country, $param->country_education)->id, [
+            'info_id' => 2
+        ]);
+
+        $country->countryVisa()->attach($this->createContent($country, $param->country_visa)->id, [
+            'info_id' => 3
+        ]);
+
+        return Response::json([
+            'code' => 0,
+            'country' => $country,
+            'message' => 'Амжилттай засварлалаа.',
+        ]);
     }
 
     /**
@@ -150,5 +206,13 @@ class CountryController extends Controller
     public function destroy($id)
     {
         //
+        DB::table('country_info')->where('country_id', $id)->delete();
+        Country::destroy($id);
+        DB::table('contentable')->where('contentable_id', $id)->where('contentable_type', 'App\\Country')->delete();
+
+        return Response::json([
+            'code' => 0,
+            'message' => 'Амжилттай устгалаа.'
+        ]);
     }
 }
