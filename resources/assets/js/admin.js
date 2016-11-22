@@ -17,6 +17,7 @@ import AdminView from './web/AdminView.vue'
 import CountryView from './components/CountryView.vue'
 import SchoolView from './components/SchoolView.vue'
 import NewsView from './components/NewsView.vue'
+import AlbumView from './components/AlbumView.vue'
 
 Vue.config.debug = true
 Vue.config.devtools = true
@@ -27,6 +28,6 @@ const app = new Vue({
     el: 'body',
 
     components : {
-    	AdminView, CountryView, SchoolView, NewsView
+    	AdminView, CountryView, SchoolView, NewsView, AlbumView
     }
 });
