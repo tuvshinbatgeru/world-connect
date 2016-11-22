@@ -1,18 +1,18 @@
 <template>
-	<div class="slide" :style="'background-image: url(\'' + item.img_url +'\')'">
+	<div class="slide">
 		<div class="cntr-fluid relative">
 			<div class="social-container">
 				Хуваалцах <i class="fa fa-facebook-official"></i> <i class="fa fa-twitter-square"></i>
 			</div>
 			<div class="news-container">
 				<div class="news-title">
-					{{ item.title }}
+					{{item.title}}
 				</div>
 				<div class="news-description">
-					{{ item.description }}
+					{{{item.info[0].content}}}
 				</div>
 				<a class="news-type">
-					ТЭТГЭЛЭГ
+					{{item.type | newsFilter}}
 				</a>
 			</div>
 		</div>
@@ -26,6 +26,22 @@
 				required : true
 			}
 		},
+
+		filters : {
+			newsFilter : function (value) {
+				var parsed = parseInt(value)
+				switch (parsed) {
+					case 1: 
+						return 'Мэдээлэл'
+					case 2:
+						return 'Тэтгэлэг'
+					case 3: 
+						return 'Зар'
+					case 4:
+						return 'Сургалт'
+				}
+			}
+		}
 
 	}
 </script>

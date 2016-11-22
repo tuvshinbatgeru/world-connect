@@ -26,14 +26,46 @@
           </div>
         </div>
       </div>
-    </div>
+    </div>	
 
 	<div v-show="!showNewsModify">
-		<div class="col-md-12">
-			<a @click="newNews()" class="btn btn-info btn-fill">
-				Нэмэх
-			</a>	
+		<div class="row">
+			<div class="col-md-6 pull-left">
+				<a @click="newNews()" class="btn btn-info btn-fill">
+					Нэмэх
+				</a>	
+			</div>
+			<div class="col-md-6 pull-right">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+					      <select class="form-control" v-model="type" @change="typeChanged">
+					        <option value="0" selected>Бүгд</option>
+					        <option value="1">
+					        	Мэдээлэл
+					        </option>
+					        <option value="2">
+					        	Тэтгэлэг
+					        </option>
+					        <option value="3">
+					        	Зар
+					        </option>
+					        <option value="4">
+					        	Сургалт
+					        </option>
+					      </select>
+					      <br>
+					    </div>
+				    </div>
+				    <div class="col-md-6">
+				    	<div class="form-group">
+							<input class="form-control" placeholder="хайх ..." />	
+						</div>
+					</div>
+			    </div>	
+			</div>
 		</div>
+
 		<div class="col-md-12">
 			<div class="card">
 		        <div class="header">
@@ -71,6 +103,11 @@
 		                    </tr>   	
 		                </tbody>
 		            </table>
+		            <paginate :paginate="10" 
+		            		  :total="total"
+		            		  @page-changed="pageChanged"
+		            >
+		            </paginate>
 		        </div>
 		    </div>
 		</div>

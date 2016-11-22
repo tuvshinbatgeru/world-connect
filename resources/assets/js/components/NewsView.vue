@@ -1,7 +1,9 @@
 <script>
 	import ModifyNews from './modified/ModifyNews.vue'
+	import Paginateable from '../mixins/Paginateable'
 
 	export default {
+		mixins : [Paginateable],
 		props : {
 			title : {},
 		},
@@ -11,17 +13,17 @@
 				information : [],
 				showNewsModify : false,
 				selectedNews : {},
-				newsInstance : {}
+				newsInstance : {},
+				type : 0
 			}
 		},
 
 		created : function () {
-			this.getNews()
+
 		},
 
 		filters : {
 			newsFilter : function (value) {
-				debugger
 				var parsed = parseInt(value)
 				switch (parsed) {
 					case 1: 
@@ -37,9 +39,20 @@
 		},
 
 		methods : {
+			typeChanged : function () {
+				this.getNews()
+			},
+
+			pageChanged : function (page) {
+				this.pageIndex = page
+				this.getNews()
+			},
+
 			getNews : function () {
-				this.$http.get(this.$env.get('APP_URI') + 'admin/news/list').then(res => {
+				this.$http.get(this.$env.get('APP_URI') + 'admin/news/list?page=' + this.pageIndex + 
+					(this.type != 0 ? '&type=' + this.type : '')).then(res => {
 				  	this.information = res.data.result.data
+				  	this.total = res.data.result.total
 				}).catch(err => {
 				});
 			},
@@ -125,6 +138,13 @@
 				})
 			},
 		},
+
+		watch : {
+			type : function (old, val) {
+//				this.getNews()
+			}
+		},
+
 		components : {
 			ModifyNews
 		}

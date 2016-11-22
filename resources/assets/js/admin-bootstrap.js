@@ -39,6 +39,7 @@ require('../../../node_modules/jquery-sortable/source/js/jquery-sortable-min')
 require('../../../node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget')
 require('../../../node_modules/blueimp-file-upload/js/jquery.iframe-transport')
 require('../../../node_modules/blueimp-file-upload/js/jquery.fileupload')
+require('./Core/fontsize')
 
 
 //global storage
@@ -50,9 +51,13 @@ Vue.use(Tools)
 
 import CustomEditor from './components/CustomEditor.vue'
 import CoreNotify from './components/CoreNotify.vue'
+import Paginate from './mixins/Paginate.vue'
+import AlbumPhotos from './components/AlbumPhotos.vue'
 
 Vue.component('CustomEditor', CustomEditor)
 Vue.component('CoreNotify', CoreNotify)
+Vue.component('Paginate', Paginate)
+Vue.component('AlbumPhotos', AlbumPhotos)
 
 
 /**
