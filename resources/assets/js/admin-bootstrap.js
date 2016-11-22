@@ -39,7 +39,6 @@ require('../../../node_modules/jquery-sortable/source/js/jquery-sortable-min')
 require('../../../node_modules/blueimp-file-upload/js/vendor/jquery.ui.widget')
 require('../../../node_modules/blueimp-file-upload/js/jquery.iframe-transport')
 require('../../../node_modules/blueimp-file-upload/js/jquery.fileupload')
-require('./Core/fontsize')
 
 
 //global storage
