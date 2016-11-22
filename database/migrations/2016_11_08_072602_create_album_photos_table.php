@@ -17,6 +17,7 @@ class CreateAlbumPhotosTable extends Migration
             $table->integer('album_id')->unsigned()->index();
             $table->integer('photo_id')->unsigned()->index();
             $table->string('caption');
+            $table->tinyInteger('pinned')->default(0);
             $table->timestamps();
         });
     }
