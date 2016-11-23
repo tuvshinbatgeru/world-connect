@@ -29,6 +29,15 @@ Vue.use(require('vue-moment'), { moment })
 import _env from '../../../env.js'
 Vue.use(require('vue-env'), _env)
 
+
+var imagesLoaded = require('imagesloaded')
+
+imagesLoaded.makeJQueryPlugin( $ );
+
+var jQueryBridget = require('jquery-bridget')
+var Masonry = require('masonry-layout')
+
+jQueryBridget( 'masonry', Masonry, $ )
 /**
  * We'll register a HTTP interceptor to attach the "CSRF" header to each of
  * the outgoing requests issued by this application. The CSRF middleware
