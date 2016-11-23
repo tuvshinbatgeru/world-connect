@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contentable;
+use App\Http\Controllers\PhotoController;
 use App\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -36,7 +37,7 @@ class NewsController extends Controller
 
     public function news(Request $request)
     {
-        $news = News::with('info')->limit(5)->get();
+        $news = News::with('info')->latest()->limit(5)->get();
 
         return Response::json([
             'code' => 0,
@@ -69,9 +70,14 @@ class NewsController extends Controller
         $news->type = $param->type;
         $news->country_id = $param->country;
         $news->visit_count = 0;
+
+        $cover = $request->cover;
+
+        $news->cover_url = PhotoController::savePhoto($cover, 'news');
+
         $news->save();
 
-        $this->createContent($news, $param->news_info);
+        $this->createContent($news, $param->news_info, $param->news_description);
 
         return Response::json([
             'code' => 0,
@@ -80,10 +86,11 @@ class NewsController extends Controller
         ]);
     }
 
-    public function createContent($news, $data)
+    public function createContent($news, $data, $description)
     {
         $content = new Contentable;
         $content->contentable_id = $news->id;
+        $content->description = $description;
         $content->contentable_type = get_class($news);
         $content->content = stripslashes($data); 
 
@@ -135,11 +142,18 @@ class NewsController extends Controller
         $news->title = $param->title;
         $news->type = $param->type;
         $news->country_id = $param->country;
+
+        $cover = $request->cover;
+
+        if($cover) {
+            $news->cover_url = PhotoController::savePhoto($cover, 'news');
+        }
+
         $news->save();
 
         DB::table('contentable')->where('contentable_id', $news->id)->where('contentable_type', 'App\\News')->delete();
 
-        $this->createContent($news, $param->news_info);
+        $this->createContent($news, $param->news_info, $param->news_description);
 
         return Response::json([
             'code' => 0,

@@ -23,6 +23,15 @@ class SchoolController extends Controller
         return view('admin.school.index');
     }
 
+    public function schools()
+    {
+        $schools = School::latest()->limit(5)->get();
+        return Response::json([
+            'code' => 0,
+            'result' => $schools
+        ]);
+    }
+
     public function list()
     {
         $schools = School::with('degrees', 'country')
