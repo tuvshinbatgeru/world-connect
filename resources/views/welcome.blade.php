@@ -137,24 +137,6 @@
 						<div class="col-md-12">
 							<div class="feed-container mini">
 								<div class="feed-title">
-									Валютын ханш
-								</div>
-								<table class="currency-table">
-									<tr v-for="xansh in xanshs">
-										<td>
-											<i class="@{{xansh.code}}"></i>
-											@{{xansh.code}}
-										</td>
-										<td>
-											@{{xansh.rate}}
-										</td>
-									</tr>
-								</table>
-							</div>
-						</div>
-						<div class="col-md-12">
-							<div class="feed-container mini">
-								<div class="feed-title">
 									Сургуулиуд
 								</div>
 								<div class="university" v-for="school in schools">
@@ -186,6 +168,25 @@
 									<div class="fb-page" data-href="https://www.facebook.com/worldconnect.international" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/facebook" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/facebook">Facebook</a></blockquote>
 									</div>
 								</div>
+							</div>
+						</div>
+
+						<div class="col-md-12">
+							<div class="feed-container mini">
+								<div class="feed-title">
+									Валютын ханш
+								</div>
+								<table class="currency-table">
+									<tr v-for="xansh in xanshs">
+										<td>
+											<i class="@{{xansh.code}}"></i>
+											@{{xansh.code}}
+										</td>
+										<td>
+											@{{xansh.rate}}
+										</td>
+									</tr>
+								</table>
 							</div>
 						</div>
 					</div>
