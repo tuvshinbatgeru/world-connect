@@ -23,6 +23,18 @@ class AlbumController extends Controller
         return view('admin.album.index');
     }
 
+    public function albums(Request $request)
+    {
+        $query = Album::with('pinnedPhoto', 'country')
+                      ->withCount('photos')
+                      ->latest()->limit(10)->get();
+
+        return Response::json([
+            'code' => 0,
+            'result' => $query,
+        ]);
+    }
+
     public function list(Request $request)
     {
         $query = Album::with('pinnedPhoto', 'country')

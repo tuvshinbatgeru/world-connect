@@ -12,6 +12,11 @@ use Response;
 
 class AdminController extends Controller
 {
+	public function dashboard()
+	{
+		return view('admin.dashboard.index');
+	}
+
 	public function delete(Request $request)
 	{
 		if(!isset($request->file)) {
