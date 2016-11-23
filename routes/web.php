@@ -19,11 +19,13 @@ Route::get('/admin', function () {
 	return view('admin.index');
 });
 
+Route::get('/album', 'AlbumController@albums');
 Route::get('/news', 'NewsController@news');
 Route::get('/school', 'SchoolController@schools');
 
 Route::group(['prefix' => '/admin'], function () {
 	Route::get('/dashboard', 'AdminController@dashboard');
+	
 	Route::get('/country/list', 'CountryController@list');
 	Route::get('/country/check', 'CountryController@check');
 	Route::get('/country/select', 'CountryController@counties');
