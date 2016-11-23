@@ -13,7 +13,7 @@ class Contentable extends Model
     protected $table = 'contentable';
 
 	protected $fillable = [
-        'contentable_type', 'content'
+        'contentable_type', 'content', 'description'
     ];
 
 
