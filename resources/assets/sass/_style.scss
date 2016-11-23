@@ -65,7 +65,6 @@ body {
 .header {
 	background-color: #fff;
 	border-bottom: 1px solid $grey;
-	margin-bottom: 15px;
 	.wc-nav-logo {
 		vertical-align: middle;
 	}
@@ -481,6 +480,13 @@ body {
     			}
     		}
     	}
+    	&.university {
+    		padding-left: 41px;
+    		.cover {
+    			width: 90px;
+    			max-height: 90px;
+    		}
+    	}
 		.cover {
 			width: 100%;
 			position: relative;
@@ -767,6 +773,170 @@ body {
 }
 
 // footer end
+
+// currency table
+
+.currency-table {
+	margin: 10px 28px 0px 28px;
+	font-size: 13px;
+	width: 100%;
+	i {
+		background: url(../../images/site/flags.png) no-repeat top left;
+		width: 16px;
+		height: 16px;
+		padding-left: 25px;
+	}
+	.AED {background-position: 0 0; }
+    .AUD {background-position: 0 -66px; }
+    .BGN {background-position: 0 -132px; }
+    .CAD {background-position: 0 -198px; }
+    .CHF {background-position: 0 -264px; }
+    .CNY {background-position: 0 -330px; }
+    .CZK {background-position: 0 -396px; }
+    .DKK {background-position: 0 -462px; }
+    .EGP {background-position: 0 -528px; }
+    .EUR {background-position: 0 -594px; }
+    .GBP {background-position: 0 -660px; }
+    .HKD {background-position: 0 -726px; }
+    .HUF {background-position: 0 -792px; }
+    .IDR {background-position: 0 -858px; }
+    .INR {background-position: 0 -924px; }
+    .JPY {background-position: 0 -990px; }
+    .KPW {background-position: 0 -1056px; }
+    .KRW {background-position: 0 -1122px; }
+    .KWD {background-position: 0 -1188px; }
+    .KZT {background-position: 0 -1254px; }
+    .MYR {background-position: 0 -1320px; }
+    .NOK {background-position: 0 -1386px; }
+    .NPR {background-position: 0 -1452px; }
+    .NZD {background-position: 0 -1518px; }
+    .PLN {background-position: 0 -1584px; }
+    .RUB {background-position: 0 -1650px; }
+    .SEK {background-position: 0 -1716px; }
+    .SGD {background-position: 0 -1782px; }
+    .THB {background-position: 0 -1848px; }
+    .TRY {background-position: 0 -1914px; }
+    .TWD {background-position: -66px 0; }
+    .UAH {background-position: -66px -66px; }
+    .USD {background-position: -66px -127px; }
+    .ZAR {background-position: -66px -193px; }
+}
+
+// currency table end
+
+// country
+
+.country-cover {
+	width: 100%;
+	background-size: cover;
+	background-position: center;
+	height: 475px;
+	.text-outer-wrapper {
+		display: table;
+		width: 100%;
+		height: 100%;
+		.text-centerize {
+			display: table-cell;
+			text-align: center;
+			vertical-align: middle;
+			.country-cover-name {
+				font-size: 67px;
+				font-weight: 400;
+				color: #fff;
+			    text-shadow: 0px 0px 5px #505050;
+		        letter-spacing: 10px;
+				text-transform: uppercase;
+			    img {
+		    	    height: 50px;
+				    vertical-align: initial;
+				    margin-right: 40px;
+			    }
+			    a {
+			    	color: #fff;
+			    	&:hover {
+			    		text-decoration: none;
+			    		color: #fff;
+			    	}
+				    i {
+				    	-moz-transform: translateY(-5px);
+						-webkit-transform: translateY(-5px);
+						-o-transform: translateY(-5px);
+						-ms-transform: translateY(-5px);
+						transform: translateY(-5px);
+				    }
+			    }
+			}
+		}
+	}
+}
+.country-navigator {
+	margin-top: 15px;
+	ul {
+		list-style: none;
+		padding: 0px;
+		li {
+			a {
+				display: block;
+				width: 100%;
+				color: #000;
+				padding: 5px 0px 5px 26px;
+				cursor: pointer;
+				position: relative;
+				-webkit-transition: all 300ms cubic-bezier(0.470, 0.000, 0.745, 0.715); 
+			    -moz-transition: all 300ms cubic-bezier(0.470, 0.000, 0.745, 0.715); 
+			    -o-transition: all 300ms cubic-bezier(0.470, 0.000, 0.745, 0.715); 
+		        transition: all 300ms cubic-bezier(0.470, 0.000, 0.745, 0.715); /* easeInSine */
+				&:hover {
+					color: #000;
+					text-decoration: none;
+					background-color: $grey;
+					&:before {
+						background-color: $orange;
+					}
+				}
+				&:before {
+					content: ' ';
+					-webkit-transition: all 300ms cubic-bezier(0.470, 0.000, 0.745, 0.715); 
+				    -moz-transition: all 300ms cubic-bezier(0.470, 0.000, 0.745, 0.715); 
+				    -o-transition: all 300ms cubic-bezier(0.470, 0.000, 0.745, 0.715); 
+			        transition: all 300ms cubic-bezier(0.470, 0.000, 0.745, 0.715); /* easeInSine */
+					position: absolute;
+					height: 100%;
+					width: 2px;
+					left: 0px;
+					top: 0px;
+					background-color: transparent;
+				}
+			}
+		}
+	}
+}
+
+.university-filter-list {
+	float: right;
+	ul {
+		padding: 0px;
+		list-style: none;
+		li {
+			float: left;
+			padding-right: 20px;
+			color: #aaa;
+			cursor: pointer;
+			font-weight: normal;
+			&:last-child {
+				padding-right: 0px;
+			}
+			&:hover {	
+				color: #000;
+			}
+			&.active {
+				color: #000;
+			}
+		}
+	}
+}
+
+// country end
 
 //media 
 $mobile-width: 750px;
