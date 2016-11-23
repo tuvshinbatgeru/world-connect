@@ -85,7 +85,7 @@
 
 			saveNews : function (data) {
 				this.$http.post(
-					this.$env.get('APP_URI') + 'admin/news?data=' + data.param
+					this.$env.get('APP_URI') + 'admin/news?data=' + data.param, data.formData
 				).then(res => {
 					if(res.data.code == 0) {
 						this.information.push(res.data.result)
