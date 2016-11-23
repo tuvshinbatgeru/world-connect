@@ -16,6 +16,7 @@ class CreateNewsTable extends Migration
         Schema::create('news', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->string('cover_url');
             $table->tinyInteger('type'); //1 - news, 2 - zar, 3 - tetgeleg
             $table->integer('country_id')->unsigned()->index();
             $table->integer('visit_count')->unsigned();

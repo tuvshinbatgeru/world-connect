@@ -17,6 +17,7 @@ class CreateContentableTable extends Migration
             $table->increments('id');
             $table->integer('contentable_id');
             $table->string('contentable_type');
+            $table->string('description');
             $table->text('content');
             $table->timestamps();
         });
