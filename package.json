@@ -24,6 +24,7 @@
     "gulp-install": "^0.6.0",
     "medium-editor-insert-plugin": "^2.4.0",
     "moment": "^2.14.1",
+    "vue-google-maps": "^0.1.21",
     "vue-lazyload": "^0.8.2",
     "vue-moment": "^2.0.1"
   }
