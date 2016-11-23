@@ -1,5 +1,5 @@
 <template>
-	<div class="slide">
+	<div class="slide" :style="'background-image:url(' + item.cover_url + ')'">
 		<div class="cntr-fluid relative">
 			<div class="social-container">
 				Хуваалцах <i class="fa fa-facebook-official"></i> <i class="fa fa-twitter-square"></i>
@@ -9,7 +9,7 @@
 					{{item.title}}
 				</div>
 				<div class="news-description">
-					{{{item.info[0].content}}}
+					{{item.info[0].description}}
 				</div>
 				<a class="news-type">
 					{{item.type | newsFilter}}

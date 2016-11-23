@@ -20,6 +20,7 @@ Route::get('/admin', function () {
 });
 
 Route::get('/news', 'NewsController@news');
+Route::get('/school', 'SchoolController@schools');
 
 Route::group(['prefix' => '/admin'], function () {
 	Route::get('/dashboard', 'AdminController@dashboard');

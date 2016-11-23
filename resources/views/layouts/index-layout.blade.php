@@ -184,19 +184,6 @@
 			</div>
 		</div>
 	</section>
-
 	<script src="{{ elixir('js/app.js') }}"></script>
-	<script>
-        jQuery(document).ready(function ($) {
-
-        	$(".wc-content-nav ul li").on("click", function(event){
-        		if($(".card-container").css('display') == 'none')
-        			$(".card-container").slideDown("fast");
-        		else
-        			$(".card-container").slideUp("fast");
-        	});
-           
-        });
-    </script>
 </body>
 </html>

@@ -58,64 +58,24 @@
 						<div class="feed-title">
 							СҮҮЛД НЭМЭГДСЭН МЭДЭЭЛЭЛ
 						</div>
-						<div class="content-container">
-							<div class="cover">
-								<div class="cover-img">
-									<img class="horizontal" src="{{asset('images/america-cover.jpg')}}"/>
-								</div>
-							</div>
-							<div class="content">
-								<div class="content-title">
-									АМЕРИКТ МАГИСТРЫН ТЭТГЭЛЭГ ЗАРЛАГДЛАА
-									<label class="date">
-										11 сарын 19, 2016
-									</label>
-								</div>
-								<div class="content-description">
-									Австралийн Үндэсний Их Сургуулийн Бизнес, Эдийн засгийн коллеж нь тус сургуульд магистрын зэргээр анх удаа суралцахаар элсэж буй 10 гадаад оюутанд 50% тэтгэлэг олгоно. Латин Америк, Европ, Ази, Зүүн өмнөд Ази болон Евро-Ази аас эхэлж буй оюутнуудаас тус бүр 1 оюутан тэтгэлэг
-								</div>
-								<div class="content-info">
-									<div class="row">
-										<div class="col-xs-6">
-											<span class="share social-share facebook">
-												SHARE
-											</span>
-											<span class="tweet social-share twitter">
-												TWEET
-											</span>
-										</div>
-										<div class="col-xs-6 text-right">
-											<span class="view">
-												<i class="fa fa-eye"></i> 4212
-											</span>
-											<span class="like">
-												<i class="fa fa-heart"></i> 512
-											</span>
-											<span class="news-type">
-												ТЭТГЭЛЭГ
-											</span>
-										</div>	
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="content-container small">
+
+						<div class="content-container" :class="$index != 0 ? 'small' : ''" v-for="news in latestNews">
 							<div class="cover-cntr">
 								<div class="cover">
 									<div class="cover-img">
-										<img class="horizontal" src="{{asset('images/england-cover.jpg')}}"/>
+										<img class="horizontal" :src="news.cover_url"/>
 									</div>
 								</div>
 							</div>
 							<div class="content">
 								<div class="content-title">
-									АНГЛИД БАКЛАВРЫН ТЭТГЭЛЭГ ЗАРЛАГДЛАА
+									@{{news.title}}
 									<label class="date">
-										11 сарын 19, 2016
+										@{{news.created_at | moment 'from'}}
 									</label>
 								</div>
 								<div class="content-description">
-									Австралийн Үндэсний Их Сургуулийн Бизнес, Эдийн засгийн коллеж нь тус сургуульд магистрын
+									@{{news.info[0].description}}
 								</div>
 								<div class="content-info">
 									<div class="row">
@@ -129,99 +89,10 @@
 										</div>
 										<div class="col-xs-6 text-right">
 											<span class="view">
-												<i class="fa fa-eye"></i> 4212
-											</span>
-											<span class="like">
-												<i class="fa fa-heart"></i> 512
+												<i class="fa fa-eye"></i> @{{news.visit_count}}
 											</span>
 											<span class="news-type">
-												ТЭТГЭЛЭГ
-											</span>
-										</div>	
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="content-container small">
-							<div class="cover-cntr">
-								<div class="cover">
-									<div class="cover-img">
-										<img class="horizontal" src="{{asset('images/england-cover.jpg')}}"/>
-									</div>
-								</div>
-							</div>
-							<div class="content">
-								<div class="content-title">
-									АНГЛИД БАКЛАВРЫН ТЭТГЭЛЭГ ЗАРЛАГДЛАА
-									<label class="date">
-										11 сарын 19, 2016
-									</label>
-								</div>
-								<div class="content-description">
-									Австралийн Үндэсний Их Сургуулийн Бизнес, Эдийн засгийн коллеж нь тус сургуульд магистрын зэргээр анх удаа суралцахаар элсэж буй 10 гадаад оюутанд 50% тэтгэлэг олгоно. Латин Америк, Европ, Ази, Зүүн өмнөд Ази болон Евро-Ази аас эхэлж буй оюутнуудаас тус бүр 1 оюутан тэтгэлэг
-								</div>
-								<div class="content-info">
-									<div class="row">
-										<div class="col-xs-6">
-											<span class="share social-share facebook">
-												SHARE
-											</span>
-											<span class="tweet social-share twitter">
-												TWEET
-											</span>
-										</div>
-										<div class="col-xs-6 text-right">
-											<span class="view">
-												<i class="fa fa-eye"></i> 4212
-											</span>
-											<span class="like">
-												<i class="fa fa-heart"></i> 512
-											</span>
-											<span class="news-type">
-												ТЭТГЭЛЭГ
-											</span>
-										</div>	
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="content-container small">
-							<div class="cover-cntr">
-								<div class="cover">
-									<div class="cover-img">
-										<img class="horizontal" src="{{asset('images/england-cover.jpg')}}"/>
-									</div>
-								</div>
-							</div>
-							<div class="content">
-								<div class="content-title">
-									АНГЛИД БАКЛАВРЫН ТЭТГЭЛЭГ ЗАРЛАГДЛАА
-									<label class="date">
-										11 сарын 19, 2016
-									</label>
-								</div>
-								<div class="content-description">
-									Австралийн Үндэсний Их Сургуулийн Бизнес, Эдийн засгийн коллеж нь тус сургуульд магистрын зэргээр анх удаа суралцахаар элсэж буй 10 гадаад оюутанд 50% тэтгэлэг олгоно. Латин Америк, Европ, Ази, Зүүн өмнөд Ази болон Евро-Ази аас эхэлж буй оюутнуудаас тус бүр 1 оюутан тэтгэлэг
-								</div>
-								<div class="content-info">
-									<div class="row">
-										<div class="col-xs-6">
-											<span class="share social-share facebook">
-												SHARE
-											</span>
-											<span class="tweet social-share twitter">
-												TWEET
-											</span>
-										</div>
-										<div class="col-xs-6 text-right">
-											<span class="view">
-												<i class="fa fa-eye"></i> 4212
-											</span>
-											<span class="like">
-												<i class="fa fa-heart"></i> 512
-											</span>
-											<span class="news-type">
-												ТЭТГЭЛЭГ
+												@{{news.type | newsFilter}}
 											</span>
 										</div>	
 									</div>
@@ -237,6 +108,10 @@
 								<div class="feed-title">
 									Валютын ханш
 								</div>
+								<div class="row" v-for="xansh in xanshs">
+									<p>@{{xansh.code}}</p>
+									<p>@{{xansh.rate}}</p>
+								</div>
 							</div>
 						</div>
 						<div class="col-md-12">
@@ -244,15 +119,15 @@
 								<div class="feed-title">
 									Сургуулиуд
 								</div>
-								<div class="university">
+								<div class="university" v-for="school in schools">
 									<div class="table--display">
 										<div class="university-img table--cell">
 											<div class="cover-img">
-												<img class="horizontal" src="{{asset('images/cambridge.png')}}"/>
+												<img class="horizontal" :src="school.logo_url"/>
 											</div>
 										</div>
 										<div class="university-name table--cell">
-											UNIVERSITY OF CAMBRIDGE
+											@{{school.name}}
 										</div>
 									</div>
 								</div>
@@ -267,5 +142,15 @@
 				</div>
 			</div>
 		</div>
+
+		<map style="height: 300px; display: block;" 
+		  :center="{lat:47.913995, lng:106.916081}"
+		  :map-type-id="roadmap"
+		  :zoom="17"
+		>
+			<marker 
+		      :position="{lat:47.913995, lng:106.916081}"
+		    ></marker>
+		</map>
 	</section>
 @stop
