@@ -16,7 +16,9 @@
 				countries : [],
 				schools : [],
 				latestNews : [],
-				xanshs : []
+				xanshs : [],
+              	albums: [],
+              	masonryContainer : null
 			}
 		},
 
@@ -26,11 +28,16 @@
 			this.getLatestNews()
 			this.getSchools()
 			this.getHanshNews()
+			this.getAlbums()
 		},
 
 		ready : function () {
-			this.setItem()
 			this.setContext()
+			this.masonryContainer = $('#container').masonry({
+			    itemSelector: '.item',
+			    columnWidth: 200,
+			    gutter: 2
+			});
 		},
 
 		filters : {
@@ -50,6 +57,47 @@
 		},
 
 		methods : {
+            getAlbums : function () {
+            	this.$http.get(this.$env.get('APP_URI') + 'album').then(res => {
+            	  	this.albums = res.data.result
+            	  	this.calcMasonry()
+            	}).catch(err => {
+            	});
+            },
+
+            browseAlbum : function (album_id) {
+            	$('#albumSlide').modal('toggle');
+            },	
+
+            getMasonryItems : function () {
+				var items = ''
+
+				_.forEach(this.albums, function (album) {
+				  		items += '<div @click="browseAlbum(' + album.id + ')" class="item">'+
+				    '<img src="' + album.pinned_photo[0].url + '"/></div>'	
+				})
+
+			  	return $( items )
+            },
+
+            calcMasonry : function () {
+            	var $items = this.getMasonryItems()
+                var msnry = this.masonryContainer.data('masonry');
+			    var itemSelector = msnry.options.itemSelector;
+			  	// hide by default
+			  	$items.hide();
+			    // append to container
+			    var element = this.masonryContainer.append( $items )
+
+			    this.$compile(element.get(0))
+
+			    $items.imagesLoaded().progress( function( imgLoad, image ) {
+			    var $item = $( image.img ).parents( itemSelector );
+			    $item.show();
+			    msnry.appended( $item );
+			  });
+            },
+
 			getHanshNews : function () {
 				this.$http.get('http://monxansh.appspot.com/xansh.json?currency=USD|EUR|JPY|GBP|RUB|CNY|KRW').then(res => {
 					this.xanshs = res.body
@@ -90,13 +138,6 @@
 				});
 			},
 
-			setItem : function () {
-				this.items = [
-					{title: 'АМЕРИКТ МАГИСТРЫН ТЭТГЭЛЭГ ЗАРЛАГДЛАА',description: 'Австралийн Үндэсний Их Сургуулийн Бизнес, Эдийн засгийн коллеж нь тус сургуульд магистрын зэргээр анх удаа суралцахаар элсэж буй 10 гадаад оюутанд 50% тэтгэлэг олгоно. Латин Америк, Европ, Ази, Зүүн өмнөд Ази болон Евро-Ази аас эхэлж буй оюутнуудаас тус бүр 1 оюутан тэтгэлэг' , img_url: 'images/sidebar-5.jpg', },
-					{title: 'АМЕРИКТ МАГИСТРЫН ТЭТГЭЛЭГ ЗАРЛАГДЛАА',description: 'Австралийн Үндэсний Их Сургуулийн Бизнес, Эдийн засгийн коллеж нь тус сургуульд магистрын зэргээр анх удаа суралцахаар элсэж буй 10 гадаад оюутанд 50% тэтгэлэг олгоно. Латин Америк, Европ, Ази, Зүүн өмнөд Ази болон Евро-Ази аас эхэлж буй оюутнуудаас тус бүр 1 оюутан тэтгэлэг' , img_url: 'images/1920/blue.jpg'},
-					{title: 'АМЕРИКТ МАГИСТРЫН ТЭТГЭЛЭГ ЗАРЛАГДЛАА',description: 'Австралийн Үндэсний Их Сургуулийн Бизнес, Эдийн засгийн коллеж нь тус сургуульд магистрын зэргээр анх удаа суралцахаар элсэж буй 10 гадаад оюутанд 50% тэтгэлэг олгоно. Латин Америк, Европ, Ази, Зүүн өмнөд Ази болон Евро-Ази аас эхэлж буй оюутнуудаас тус бүр 1 оюутан тэтгэлэг' , img_url: 'images/1920/red.jpg'}
-				]
-			},
 			setContext : function () {
                 _.forEach(this.items, function (obj) {
                     obj.context = 'primary-slide'
@@ -104,7 +145,7 @@
             }
 		},
 		components: {
-			HorizontalSlide, Map, Marker
+			HorizontalSlide, Map, Marker, 
 		}
 	}
 </script>
