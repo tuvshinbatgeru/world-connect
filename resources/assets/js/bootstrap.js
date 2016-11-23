@@ -20,6 +20,11 @@ require('./hammer.min')
 window.Vue = require('vue');
 require('vue-resource');
 
+const moment = require('moment')
+require('moment/locale/en-au')
+
+Vue.use(require('vue-moment'), { moment })
+
 //global storage
 import _env from '../../../env.js'
 Vue.use(require('vue-env'), _env)
