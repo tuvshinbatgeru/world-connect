@@ -73,8 +73,11 @@
 				var items = ''
 
 				_.forEach(this.albums, function (album) {
-				  		items += '<div @click="browseAlbum(' + album.id + ')" class="item">'+
-				    '<img src="' + album.pinned_photo[0].url + '"/></div>'	
+				  		items += 
+				  		'<div @click="browseAlbum(' + album.id + ')" class="item">'
+				  			+ '<div class="album-title-wrapper"> <div class="album-title">Байгалийн зураг <br/> <span>8 зураг</span></div> </div>'
+				  			+ '<img src="' + album.pinned_photo[0].url + '"/>' 
+				    	+ '</div>'	
 				})
 
 			  	return $( items )

@@ -104,7 +104,7 @@
 							</div>
 						</div>
 						<div class="col-md-12">
-							<div id="container">
+							<div id="container" class="margin-vertical">
 							</div>
 
 							<div id="albumSlide" class="modal" data-easein="fadeIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
@@ -159,7 +159,7 @@
 							</div>
 						</div>
 
-						<div class="col-md-12">
+						<div class="col-md-12 margin-vertical">
 							<div class="feed-container mini">
 								<div class="feed-title">
 									Сошиал хуудас
