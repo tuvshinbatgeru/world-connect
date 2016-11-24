@@ -21,12 +21,64 @@ class CountryController extends Controller
         return view('admin.country.index');
     }
 
+    public function currentCountry(Country $country, Request $request)
+    {
+        $type = $request->type;
+
+        if(!isset($request->type)) {
+            $type = 'about';
+        } 
+
+        $country->countryInformation;
+        $country->countryEducation;
+        $country->countryVisa;
+
+        return view('country')->with(compact('country', 'type'));
+    }
+
     public function counties()
     {
         $countries = Country::all();
         return Response::json([
             'code' => 0,
             'result' => $countries
+        ]);
+    }
+
+    public function news(Country $country, Request $request)
+    {
+        $query = $country->news();
+
+        if($request->type != 0) {
+            $type = $request->type;
+            $query = $query->where('type', $type);
+        }
+
+        $query = $query->with('info')->latest();
+
+        return Response::json([
+            'code' => 0,
+            'result' => $query->get(),
+        ]);
+    }
+
+    public function schools(Country $country, Request $request)
+    {
+        $query = $country->schools()->with('degrees');
+
+        if($request->type != 0) {
+            $type = $request->type;
+
+            $query = $query->whereHas('degrees', function ($subQuery) use ($type){
+                $subQuery->where('id', $type);
+            });
+        }
+
+        $query = $query->latest();
+
+        return Response::json([
+            'code' => 0,
+            'result' => $query->get(),
         ]);
     }
 
