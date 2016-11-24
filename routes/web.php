@@ -24,7 +24,11 @@ Route::get('/country/{country}/schools', 'CountryController@schools');
 Route::get('/country/{country}/news', 'CountryController@news');
 
 Route::get('/album', 'AlbumController@albums');
+Route::get('/album/{album}/photos', 'AlbumController@photos');
 Route::get('/news', 'NewsController@news');
+Route::get('/news/{news}', 'NewsController@currentNews');
+Route::get('/news/{news}/related', 'NewsController@related');
+Route::post('/news/{news}/pinned', 'NewsController@togglePin');
 Route::get('/school', 'SchoolController@schools');
 
 Route::group(['prefix' => '/admin'], function () {

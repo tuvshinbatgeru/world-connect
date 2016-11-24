@@ -53,6 +53,9 @@
 					        <option value="4">
 					        	Сургалт
 					        </option>
+					        <option value="5">
+					        	Онцлосон
+					        </option>
 					      </select>
 					      <br>
 					    </div>
@@ -79,6 +82,7 @@
 		                	<th>Төрөл</th>
 		                	<th>Үзсэн</th>
 		                	<th>Огноо</th>
+		                	<th>Төлөв</th>
 		                	<th>Засах</th>
 		                	<th>Устгах</th>
 		                </tr></thead>
@@ -89,6 +93,13 @@
 		                    	<td>@{{news.visit_count}}</td>
 		                    	<td>
 		                    		@{{news.created_at | moment "from"}}
+		                    	</td>
+		                    	<td>
+		                    		<a @click="togglePin(news)" style="font-size : 14px">
+		                    			<i class="fa" 
+		                    			   :class="news.is_pinned == 'Y' ? 'fa-check-circle' : 'fa-check'" 
+		                    			   :style="{color: news.is_pinned == 'Y' ? 'green' : '#87CB16'}"></i>
+		                    		</a>
 		                    	</td>
 		                    	<td>
 		                    		<a @click="updateNews(news)">
