@@ -24,6 +24,8 @@ class NewsController extends Controller
 
     public function currentNews(News $news)
     {
+        $news->visit_count = $news->visit_count + 1;
+        $news->save();
         $news->info;
         return view('news')->with(compact('news'));
     }
