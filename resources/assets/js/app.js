@@ -8,6 +8,7 @@
 require('./bootstrap');
 import IndexView from './components/IndexView.vue'
 import CountryView from './web/CountryView.vue'
+import NewsView from './web/NewsView.vue'
  
 const app = new Vue({
     el: 'body',
@@ -22,7 +23,7 @@ const app = new Vue({
     },
 
     components : {
-    	IndexView, CountryView
+    	IndexView, CountryView, NewsView
     }
 });
 
