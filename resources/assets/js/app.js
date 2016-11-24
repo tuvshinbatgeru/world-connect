@@ -16,7 +16,18 @@ import IndexView from './components/IndexView.vue'
 const app = new Vue({
     el: 'body',
 
+    methods : {
+    	anchorSmooth : function (event) {
+    		debugger
+    		 $('html, body').animate({
+		        scrollTop: $( $(event.currentTarget).attr('href') ).offset().top
+		    }, 500);
+		    return false;
+    	}
+    },
+
     components : {
     	IndexView
     }
 });
+
