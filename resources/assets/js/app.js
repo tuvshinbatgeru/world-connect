@@ -7,18 +7,13 @@
 
 require('./bootstrap');
 import IndexView from './components/IndexView.vue'
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the body of the page. From here, you may begin adding components to
- * the application, or feel free to tweak this setup for your needs.
- */
+import CountryView from './web/CountryView.vue'
  
 const app = new Vue({
     el: 'body',
 
     methods : {
     	anchorSmooth : function (event) {
-    		debugger
     		 $('html, body').animate({
 		        scrollTop: $( $(event.currentTarget).attr('href') ).offset().top
 		    }, 500);
@@ -27,7 +22,7 @@ const app = new Vue({
     },
 
     components : {
-    	IndexView
+    	IndexView, CountryView
     }
 });
 
