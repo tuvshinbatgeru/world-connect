@@ -19,6 +19,10 @@ Route::get('/admin', function () {
 	return view('admin.index');
 });
 
+Route::get('/country/{country}', 'CountryController@currentCountry');
+Route::get('/country/{country}/schools', 'CountryController@schools');
+Route::get('/country/{country}/news', 'CountryController@news');
+
 Route::get('/album', 'AlbumController@albums');
 Route::get('/news', 'NewsController@news');
 Route::get('/school', 'SchoolController@schools');
