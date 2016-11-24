@@ -35,11 +35,11 @@
 										</div>
 										<div class="cover-content-nav">
 											<ul>
-												<li><a :href="'/country/' + country.id + '/about'"> <i class="fa fa-flag"></i> @{{country.name}} улсын тухай </a></li>
-												<li><a> <i class="fa fa-mortar-board"></i> Боловсролын систем </a></li>
-												<li><a> <i class="fa fa-flag"></i> Визний мэдээлэл </a></li>
-												<li><a> <i class="fa fa-flag"></i> Сургуулиуд </a></li>
-												<li><a> <i class="fa fa-mortar-board"></i> Тэтгэлэг </a></li>
+												<li><a :href="'/country/' + country.id + '?type=about'"> <i class="fa fa-flag"></i> @{{country.name}} улсын тухай </a></li>
+												<li><a :href="'/country/' + country.id + '?type=education'"> <i class="fa fa-mortar-board"></i> Боловсролын систем </a></li>
+												<li><a :href="'/country/' + country.id + '?type=visa'"> <i class="fa fa-flag"></i> Визний мэдээлэл </a></li>
+												<li><a :href="'/country/' + country.id + '?type=schools'"> <i class="fa fa-flag"></i> Сургуулиуд </a></li>
+												<li><a :href="'/country/' + country.id + '?type=news'"> <i class="fa fa-mortar-board"></i> Тэтгэлэг </a></li>
 											</ul>
 										</div>
 									</div>
@@ -107,25 +107,16 @@
 							<div id="container" class="margin-vertical">
 							</div>
 
-							<div id="albumSlide" class="modal" data-easein="fadeIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
-						      <div class="modal-dialog modal-lg">
-						        <div class="modal-content">
-						          <div class="modal-header">
-						            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-						            <h4 class="modal-title" id="myModalLabel">Анхааруулга</h4>
-						          </div>
-						          <div class="modal-body">
-						          	<span>Та</span>
-						          	<strong>"@{{selectedCountry.name}}"</strong>
-						            <span>улсыг устгахдаа итгэлтэй байна уу?</span>
-						          </div>
-						          <div class="modal-footer">
-						            <button class="btn btn-danger btn-fill" data-dismiss="modal" aria-hidden="true">Үгүй</button>
-						            <button @click="deleteCountry()" data-dismiss="modal" aria-hidden="true" class="btn btn-success btn-fill">Тийм</button>
-						          </div>
-						        </div>
-						      </div>
-						    </div>
+							<div id="blueimp-gallery" class="blueimp-gallery">
+							    <div class="slides"></div>
+							    <h3 class="title"></h3>
+							    <a class="prev">‹</a>
+							    <a class="next">›</a>
+							    <a class="close">×</a>
+							    <a class="play-pause"></a>
+							    <ol class="indicator"></ol>
+							</div>
+							
 						</div>
 					</div>
 				</div>
