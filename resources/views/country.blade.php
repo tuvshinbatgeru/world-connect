@@ -23,22 +23,22 @@
 						</div>
 						<div class="country-navigator">
 							<ul>
-								<li class="active">
+								<li :class="type == 'about' ? 'active' : ''">
 									<a @click="setType('about')">Улсын тухай</a>
 								</li>
-								<li>
+								<li :class="type == 'education' ? 'active' : ''">
 									<a @click="setType('education')">Боловсролын систем</a>
 								</li>
-								<li>
+								<li :class="type == 'schools' ? 'active' : ''">
 									<a @click="setType('schools')">Сургуулиуд</a>
 								</li>
-								<li>
+								<li :class="type == 'visa' ? 'active' : ''">
 									<a @click="setType('visa')">Визний мэдээлэл</a>
 								</li>
-								<li>
+								<li :class="type == 'scholarship' ? 'active' : ''">
 									<a @click="setType('scholarship')">Тэтгэлэг</a>
 								</li>
-								<li>
+								<li :class="type == 'news' ? 'active' : ''">
 									<a @click="setType('news')">Мэдээлэл</a>
 								</li>
 							</ul>
