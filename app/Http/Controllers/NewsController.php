@@ -22,10 +22,21 @@ class NewsController extends Controller
         return view('admin.news.index');
     }
 
+    public function currentNews(News $news)
+    {
+        $news->info;
+        return view('news')->with(compact('news'));
+    }
+
     public function list(Request $request)
     {
         if(isset($request->type)) {
-            $news = News::where('type', $request->type)->latest()->paginate(10);
+            if($request->type < 5)
+                $news = News::where('type', $request->type)->latest()->paginate(10);
+            else {
+                $news = News::where('is_pinned', 'Y')->orderBy('updated_at', 'ASC')->paginate(10);
+            }
+
         }
         else $news = News::latest()->paginate(10);
         
@@ -35,9 +46,57 @@ class NewsController extends Controller
         ]);
     }
 
+    public function related(News $news)
+    {
+
+        if($this->countryLess($news)) {
+
+        }
+
+        $related = News::with('info')->limit(4)->get();
+
+        return Response::json([
+            'code' => 0,
+            'result' => $related,
+        ]);
+    }
+
+    private function countryLess($news) {
+        return $news->country_id == 0;
+    }
+
+    public function togglePin(News $news)
+    {
+        if($news->is_pinned == 'Y') {
+            $news->is_pinned = 'N';
+        } else {
+            $news->is_pinned = 'Y';
+        }
+
+        $news->save();
+
+        return Response::json([
+            'code' => 0,
+            'result' => $news->is_pinned,
+            'message' => $news->is_pinned == 'Y' ? 'Онцлосон мэдээ болголоо' : 'Энгийн мэдээ болголоо',
+        ]);
+    }
+
     public function news(Request $request)
     {
-        $news = News::with('info')->latest()->limit(5)->get();
+        if(isset($request->type)) {
+            $type = $request->type;
+
+            if($type == 'pinned') {
+                $news = News::where('is_pinned', 'Y')
+                    ->with('info')
+                    ->orderBy('updated_at', 'ASC')
+                    ->get();
+            }
+
+        } else {
+            $news = News::with('info')->latest()->limit(5)->get();
+        }
 
         return Response::json([
             'code' => 0,
