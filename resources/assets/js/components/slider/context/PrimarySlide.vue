@@ -6,7 +6,7 @@
 			</div>
 			<div class="news-container">
 				<div class="news-title">
-					{{item.title}}
+					<a :href="'/news/' + item.id">{{item.title}}</a>
 				</div>
 				<div class="news-description">
 					{{item.info[0].description}}
