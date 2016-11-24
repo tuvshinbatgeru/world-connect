@@ -18,7 +18,8 @@
 				latestNews : [],
 				xanshs : [],
               	albums: [],
-              	masonryContainer : null
+              	masonryContainer : null,
+              	blueimpInstance : null,
 			}
 		},
 
@@ -32,6 +33,8 @@
 		},
 
 		ready : function () {
+			debugger
+			this.blueimpInstance = blueimp
 			this.setContext()
 			this.masonryContainer = $('#container').masonry({
 			    itemSelector: '.item',
@@ -66,7 +69,24 @@
             },
 
             browseAlbum : function (album_id) {
-            	$('#albumSlide').modal('toggle');
+
+            	this.$http.get(this.$env.get('APP_URI') + 'album/' + album_id + '/photos').then(res => {
+
+            		var slideItems = []
+            		_.forEach(res.data.result, function (photo) {
+            			slideItems.push({
+            				title : photo.pivot.caption,
+            				href: photo.url,
+            				thumbnail : photo.url
+            			})
+            		});
+
+            	  	blueimp.Gallery(slideItems)
+            	}).catch(err => {
+            	  
+            	});
+
+            	
             },	
 
             getMasonryItems : function () {
@@ -148,7 +168,7 @@
             }
 		},
 		components: {
-			HorizontalSlide, Map, Marker, 
+			HorizontalSlide, Map, Marker 
 		}
 	}
 </script>

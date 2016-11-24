@@ -35,10 +35,22 @@
 					case 4:
 						return 'Сургалт'
 				}
+			},
+
+			stateFilter : function (value) {
+				if(value == 'Y') return 'Онцолсон'
+				return 'Энгийн'
 			}
 		},
 
 		methods : {
+			togglePin : function (news) {
+				this.$http.post(this.$env.get('APP_URI') + 'news/' + news.id + '/pinned').then(res => {
+				  	news.is_pinned = res.data.result
+				}).catch(err => {
+				});
+			},
+
 			typeChanged : function () {
 				this.getNews()
 			},
@@ -150,3 +162,9 @@
 		}
 	}
 </script>
+<style type="text/css">
+	.fa {
+		font-size: 24px;
+		text-align: center;
+	}
+</style>
