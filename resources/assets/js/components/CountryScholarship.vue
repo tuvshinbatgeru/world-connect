@@ -46,7 +46,7 @@
 				</div>
 				<div class="content">
 					<div class="content-title">
-						Канадад суралцах боломжийг олгож байна 									
+						<a>Канадад суралцах боломжийг олгож байна</a>
 						<label class="date">
 							7 өдрийн өмнө
 						</label>
