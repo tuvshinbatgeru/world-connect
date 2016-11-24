@@ -19,23 +19,48 @@
 				</ul>
 			</div>
 		</div>
-		<div class="content-container small university" v-for="news in information">
-			<div class="cover-cntr">
-				<div class="cover">
-					<div class="cover-img">
-						<img class="horizontal vertical" :src="news.cover_url"/>
+
+		<div class="content-container" :class="$index == 0 ? '' : 'small'" v-for="news in information">
+				<div class="cover-cntr">
+					<div class="cover">
+						<div class="cover-img">
+							<img class="horizontal" :src="news.cover_url"/>
+						</div>
+					</div>
+				</div>
+				<div class="content">
+					<div class="content-title">
+						<a :href="'/news/' + news.id">{{news.title}}</a>
+						<label class="date">
+							{{news.created_at | moment 'from'}}
+						</label>
+					</div>
+					<div class="content-description">
+						{{news.info[0].description}}
+					</div>
+					<div class="content-info">
+						<div class="row">
+							<div class="col-xs-6">
+								<span class="share social-share facebook">
+									SHARE
+								</span>
+								<span class="tweet social-share twitter">
+									TWEET
+								</span>
+							</div>
+							<div class="col-xs-6 text-right">
+								<span class="view">
+									<i class="fa fa-eye"></i> {{news.visit_count}}
+								</span>
+								<span class="news-type">
+									{{news.type | newsFilter}}
+								</span>
+							</div>	
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="content">
-				<div class="content-title">
-					{{news.title}}
-				</div>
-				<div class="content-description">
-					{{news.info[0].description}}
-				</div>
-			</div>
-		</div>
+
 	</div>
 </template>
 <script>
@@ -55,6 +80,22 @@
 
 		created : function () {
 			this.getNews()
+		},
+
+		filters : {
+			newsFilter : function (value) {
+				var parsed = parseInt(value)
+				switch (parsed) {
+					case 1: 
+						return 'Мэдээлэл'
+					case 2:
+						return 'Тэтгэлэг'
+					case 3: 
+						return 'Зар'
+					case 4:
+						return 'Сургалт'
+				}
+			},
 		},
 
 		methods : {
