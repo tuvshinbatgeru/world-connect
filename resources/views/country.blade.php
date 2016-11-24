@@ -16,7 +16,7 @@
 	</div>
 		<div class="cntr-fluid" id="section-content" style="margin-top: -95px;">	
 			<div class="row margin-vertical">
-				<div class="col-md-3 col-xs-12 pull-right">
+				<div class="col-md-3 col-xs-12 pull-right no-padding">
 					<div class="feed-container mini">
 						<div class="feed-title">
 							{{$country->name}}
@@ -46,7 +46,7 @@
 					</div>
 				</div>
 
-				<div class="col-md-9 col-xs-12" v-show="type == 'about'">
+				<div class="col-md-9 col-xs-12 no-padding" v-show="type == 'about'">
 					<div class="feed-container mini">
 						<div class="feed-title">
 							Улсын тухай
@@ -57,7 +57,7 @@
 					</div>
 				</div>
 
-				<div class="col-md-9 col-xs-12" v-show="type == 'visa'">
+				<div class="col-md-9 col-xs-12 no-padding" v-show="type == 'visa'">
 					<div class="feed-container mini">
 						<div class="content-container small university" >
 							{!!$country->countryVisa[0]->content!!}
@@ -65,7 +65,7 @@
 					</div>
 				</div>
 
-				<div class="col-md-9 col-xs-12" v-show="type == 'education'">
+				<div class="col-md-9 col-xs-12 no-padding" v-show="type == 'education'">
 					<div class="feed-container mini">
 						<div class="content-container small university" >
 							{!!$country->countryEducation[0]->content!!}
@@ -74,18 +74,27 @@
 				</div>
 
 
-				<div class="col-md-9 col-xs-12" v-if="type == 'schools'">
+				<div class="col-md-9 col-xs-12 no-padding" v-if="type == 'schools'">
 					<country-schools :country="{{$country->id}}">
 						
 					</country-schools>
 				</div>
 
-				<div class="col-md-9 col-xs-12" v-if="type == 'news'">
+				<div class="col-md-9 col-xs-12 no-padding" v-if="type == 'news'">
 					<country-news :country="{{$country->id}}">
 						
 					</country-news>
 				</div>
+				
+				<country-scholarship :country="{{$country->id}}" v-if="type == 'scholarship'">
+
+				</country-scholarship>
+					
 			</div>
+
+
+				
+
 		</div>
 
 	</section>

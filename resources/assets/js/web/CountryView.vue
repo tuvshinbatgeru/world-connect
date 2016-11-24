@@ -1,6 +1,7 @@
 <script>
 	import CountrySchools from '../components/CountrySchools.vue'
 	import CountryNews from '../components/CountryNews.vue'
+	import CountryScholarship from '../components/CountryScholarship.vue'
 
 	export default {
 		props : {
@@ -26,7 +27,7 @@
 		},
 
 		components : {
-			CountrySchools, CountryNews
+			CountrySchools, CountryNews, CountryScholarship
 		}
 	}
 </script>
