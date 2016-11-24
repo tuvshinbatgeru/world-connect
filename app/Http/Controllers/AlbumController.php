@@ -35,6 +35,14 @@ class AlbumController extends Controller
         ]);
     }
 
+    public function photos(Album $album)
+    {
+        return Response::json([
+            'code' => 0,
+            'result' => $album->photos,
+        ]);
+    }
+
     public function list(Request $request)
     {
         $query = Album::with('pinnedPhoto', 'country')
