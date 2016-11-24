@@ -103,10 +103,16 @@
 		</div>
 	</section>
 
-	
-	<component is="{{$currentView}}" inline-template>				
-		@yield('content')
-	</component>
+	@if (isset($type))
+        <component is="{{$currentView}}" 
+        		   type="{{$type}}"
+                   inline-template>
+    @else
+    	<component is="{{$currentView}}" 
+                   inline-template>
+    @endif
+  	   	@yield('content')
+   	</component>
 
 	<section class="footer">
 		<div class="cntr-fluid">
