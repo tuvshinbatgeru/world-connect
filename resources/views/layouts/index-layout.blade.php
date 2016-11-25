@@ -15,12 +15,8 @@
 </head>
 <body>
 	<section class="header">
-		<div class="cntr-fluid table--display">
-			<div class="table--row">
-				<div class="wc-nav-logo table--cell">
-					<img src="{{ asset('images/logo-wc.png') }}" height="50" />
-				</div>
-				<div class="wc-nav table--cell">
+		<div class="cntr-fluid">
+				<div class="wc-nav">
 					<ul>
 						<li class="active">
 							<a>
@@ -37,21 +33,24 @@
 								Холбоо барих
 							</a>
 						</li>
+						<li>
+							<div class="search-input">
+								<i class="fa fa-search"></i>
+								<input placeholder="Хайлт хийх ..." type="text" />
+							</div>
+						</li>
 					</ul>
 				</div>
-				<div class="search table--cell">
-					<div class="search-input">
-						<i class="fa fa-search"></i>
-						<input placeholder="Хайлт хийх ..." type="text" />
-					</div>
-				</div>
 			</div>
+		</div>
+		<div class="wc-nav-logo">
+			<img src="{{ asset('images/logo-wc-vertical.png') }}" height="100" />
 		</div>
 		<hr class="header-seperator"></hr>
 		<div class="cntr-fluid">
 			<div class="wc-content-nav">
 				<ul>
-					<li>
+					<li class="active">
 						<a>Зуучлах улсууд</a>
 					</li>
 					<li>
@@ -73,38 +72,13 @@
 				<div class="clearfix"></div>
 				<div class="card-container">
 					<div class="card country">
-						<div class="picture" style="background-image: url({{asset('images/sydney-opera.jpg')}});">
-						</div>
-						<div class="title">
-							<label> <img src="{{asset('images/aus-flag.png')}}" height="15" /> Австрали</label>
-						</div>
-					</div>
-					<div class="card country">
-						<div class="picture" style="background-image: url({{asset('images/sydney-opera.jpg')}});">
-						</div>
-						<div class="title">
-							<label> <img src="{{asset('images/aus-flag.png')}}" height="15" /> Австрали</label>
-						</div>
-					</div>
-					<div class="card country">
-						<div class="picture" style="background-image: url({{asset('images/sydney-opera.jpg')}});">
-						</div>
-						<div class="title">
-							<label> <img src="{{asset('images/aus-flag.png')}}" height="15" /> Австрали</label>
-						</div>
-					</div>
-					<div class="card country">
-						<div class="picture" style="background-image: url({{asset('images/sydney-opera.jpg')}});">
-						</div>
-						<div class="title">
-							<label> <img src="{{asset('images/aus-flag.png')}}" height="15" /> Австрали</label>
-						</div>
-					</div>
-					<div class="card country">
-						<div class="picture" style="background-image: url({{asset('images/sydney-opera.jpg')}});">
-						</div>
-						<div class="title">
-							<label> <img src="{{asset('images/aus-flag.png')}}" height="15" /> Австрали</label>
+						<div class="cover">
+							<div class="cover-img">
+								<img class="horizontal" src="{{asset('images/sydney-opera.jpg')}}"/>
+							</div>
+							<div class="title">
+								<a href="#"> Австрали</a>
+							</div>
 						</div>
 					</div>
 				</div>
