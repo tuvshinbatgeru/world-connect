@@ -25,9 +25,17 @@ class AlbumController extends Controller
 
     public function albums(Request $request)
     {
+        $country = $request->country;
+
         $query = Album::with('pinnedPhoto', 'country')
                       ->withCount('photos')
-                      ->latest()->limit(10)->get();
+                      ->latest();
+
+        if($country != 0) {
+            $query = $query->where('country_id', $country);
+        }
+
+        $query = $query->limit(10)->get();
 
         return Response::json([
             'code' => 0,
