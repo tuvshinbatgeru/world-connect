@@ -32,7 +32,6 @@
 			},
 
 			editSchool : function (data) {
-				debugger
 				this.$http.post(
 					this.$env.get('APP_URI') + 'admin/school/' 
 					+ this.selectedSchool.id + '?data=' + data.param, 
