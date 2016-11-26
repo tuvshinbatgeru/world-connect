@@ -115,7 +115,8 @@
 		                </tbody>
 		            </table>
 		            <paginate :paginate="10" 
-		            		  :total="total"
+		            		  v-ref:paginate
+		            		  :total.sync="total"
 		            		  @page-changed="pageChanged"
 		            >
 		            </paginate>
