@@ -14,77 +14,9 @@
     @include('includes.index-header')
 </head>
 <body>
-	<section class="header">
-		<div class="cntr-fluid">
-				<div class="wc-nav">
-					<ul>
-						<li class="active">
-							<a>
-								Нүүр хуудас
-							</a>
-						</li>
-						<li>
-							<a>
-								Бидний тухай
-							</a>
-						</li>
-						<li>
-							<a>
-								Холбоо барих
-							</a>
-						</li>
-						<li>
-							<div class="search-input">
-								<i class="fa fa-search"></i>
-								<input placeholder="Хайлт хийх ..." type="text" />
-							</div>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="wc-nav-logo">
-			<img src="{{ asset('images/logo-wc-vertical.png') }}" height="100" />
-		</div>
-		<hr class="header-seperator"></hr>
-		<div class="cntr-fluid">
-			<div class="wc-content-nav">
-				<ul>
-					<li class="active">
-						<a>Зуучлах улсууд</a>
-					</li>
-					<li>
-						<a>Сургуулиуд</a>
-					</li>
-					<li>
-						<a>Тэтгэлэгт хөтөлбөр</a>
-					</li>
-					<li>
-						<a>Визний мэдээлэл</a>
-					</li>
-					<li>
-						<a>Англи хэлний сургалт</a>
-					</li>
-					<li>
-						<a>Мэдээлэл</a>
-					</li>
-				</ul>
-				<div class="clearfix"></div>
-				<div class="card-container">
-					<div class="card country">
-						<div class="cover">
-							<div class="cover-img">
-								<img class="horizontal" src="{{asset('images/sydney-opera.jpg')}}"/>
-							</div>
-							<div class="title">
-								<a href="#"> Австрали</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+	<site-header>
+		
+	</site-header>
 
 	@if (isset($type))
         <component is="{{$currentView}}" 
