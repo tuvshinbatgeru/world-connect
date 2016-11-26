@@ -19,24 +19,42 @@
 				</ul>
 			</div>
 		</div>
-		<div class="content-container small university" v-for="school in schools">
-			<div class="cover-cntr">
-				<div class="cover">
-					<div class="cover-img">
-						<img class="horizontal vertical" :src="school.cover_url"/>
+		<div class="content-container no-hover">
+			<div class="row">
+				<div class="col-md-4" v-for="school in schools">
+					<div class="school-card" @click="showDetail(school)">
+						<div class="school-img">
+							<div class="cover-img">
+								<img class="horizontal" :src="school.cover_url"/>
+							</div>
+							<div class="school-img-hover">
+								<i class="fa fa-search"></i>
+							</div>
+						</div>
+						<div class="school-title-wrapper">
+							<div class="school-title">
+								{{school.name}}	
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="content">
-				<div class="content-title">
-					{{school.name}}
-				</div>
-				<div class="content-description">
-					Massachusetts Institute of Technology Massachusetts Institute of Technology Massachusetts Institute of Technology
-					Massachusetts Institute of Technology Massachusetts Institute of Technology Massachusetts Institute of Technology Massachusetts Institute of Technology Massachusetts Institute of Technology Massachusetts Institute of Technology Massachusetts Institute of Technology
-				</div>
-			</div>
 		</div>
+
+		<div id="schoolInfo" class="modal" data-easein="fadeIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+	      <div class="modal-dialog modal-lg">
+	        <div class="modal-content">
+	          <div class="modal-header">
+	            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	            <h4 class="modal-title" id="myModalLabel">Сургуулийн танилцуулга</h4>
+	          </div>
+	          <div class="modal-body">
+	            {{{selectedSchool.info[0].content}}}
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+
 	</div>
 </template>
 <script>
@@ -51,6 +69,7 @@
 			return {
 				schools : [],
 				filter : 0,
+				selectedSchool : {}
 			}
 		},
 
@@ -59,6 +78,11 @@
 		},
 
 		methods : {
+			showDetail : function (school) {
+				this.selectedSchool = school
+				$('#schoolInfo').modal('toggle')
+			},
+
 			getSchools : function() {
 				this.$http.get(this.$env.get('APP_URI') + 'country/' + this.country + '/schools?type=' + this.filter).then(res => {
 				  	this.schools = res.data.result

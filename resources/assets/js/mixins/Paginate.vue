@@ -1,5 +1,5 @@
 <template>
-  <ul class="pagination"> 
+  <ul class="pagination" v-show="totalPage > 1"> 
     <li v-show="pageIndex > 1">
       <a @click="resetPage()" aria-label="First Page">
         <span aria-hidden="true">&laquo;</span>
@@ -50,12 +50,10 @@
     data () {
       return {
           pageIndex : 1,
-          totalPage : 0,
       }
     },
 
     created : function () {
-        this.totalPage = Math.ceil(this.total / this.paginate)
         this.resetPage()
     },
 
@@ -92,6 +90,11 @@
     }, 
 
     computed : {
+        totalPage : function () {
+            var totalPage = Math.ceil(this.total / this.paginate)
+            return totalPage
+        },
+
         pages : function () {
             var from = this.pageIndex - this.offset
 

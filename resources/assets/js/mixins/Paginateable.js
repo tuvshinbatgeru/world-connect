@@ -10,7 +10,7 @@ export default {
     return {
         pageIndex : 1,
         pageLast : 0,
-        total : 0,
+        total : {},
     }
   },
 
