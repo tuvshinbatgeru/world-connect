@@ -45,6 +45,7 @@
 
 		methods : {
 			togglePin : function (news) {
+				debugger
 				this.$http.post(this.$env.get('APP_URI') + 'news/' + news.id + '/pinned').then(res => {
 				  	news.is_pinned = res.data.result
 				}).catch(err => {
@@ -52,6 +53,7 @@
 			},
 
 			typeChanged : function () {
+				this.$refs.paginate.resetPage()
 				this.getNews()
 			},
 
