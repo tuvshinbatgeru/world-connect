@@ -2,6 +2,7 @@
 	import CountrySchools from '../components/CountrySchools.vue'
 	import CountryNews from '../components/CountryNews.vue'
 	import CountryScholarship from '../components/CountryScholarship.vue'
+	import AlbumSlider from '../components/AlbumSlider.vue'
 
 	export default {
 		props : {
@@ -27,7 +28,7 @@
 		},
 
 		components : {
-			CountrySchools, CountryNews, CountryScholarship
+			CountrySchools, CountryNews, CountryScholarship, AlbumSlider
 		}
 	}
 </script>
