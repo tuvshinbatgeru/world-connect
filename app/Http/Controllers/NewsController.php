@@ -51,11 +51,19 @@ class NewsController extends Controller
     public function related(News $news)
     {
 
+        $query = News::with('info')->where('id', '<>', $news->id);
+
         if($this->countryLess($news)) {
+            $query = $query->where('type', $news->type);
+        } else {
+            $query = $query->where('country_id', $news->country_id);
+        }
+
+        if($query->count() < 3) {
 
         }
 
-        $related = News::with('info')->limit(4)->get();
+        $related = $query->limit(3)->get();
 
         return Response::json([
             'code' => 0,
@@ -131,7 +139,7 @@ class NewsController extends Controller
         $news->type = $param->type;
         $news->country_id = $param->country;
         $news->visit_count = 0;
-
+        $news->is_pinned = 'N';
         $cover = $request->cover;
 
         $news->cover_url = PhotoController::savePhoto($cover, 'news');
