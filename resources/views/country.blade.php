@@ -51,7 +51,7 @@
 						<div class="feed-title">
 							Улсын тухай
 						</div>
-						<div class="content-container small university" >
+						<div class="content-container no-hover" >
 							{!!$country->countryInformation[0]->content!!}
 						</div>
 					</div>
@@ -59,7 +59,10 @@
 
 				<div class="col-md-9 col-xs-12 no-padding" v-show="type == 'visa'">
 					<div class="feed-container mini">
-						<div class="content-container small university" >
+						<div class="feed-title">
+							Визний мэдээлэл
+						</div>
+						<div class="content-container no-hover" >
 							{!!$country->countryVisa[0]->content!!}
 						</div>
 					</div>
@@ -67,7 +70,10 @@
 
 				<div class="col-md-9 col-xs-12 no-padding" v-show="type == 'education'">
 					<div class="feed-container mini">
-						<div class="content-container small university" >
+						<div class="feed-title">	
+							Боловсролын систем
+						</div>
+						<div class="content-container no-hover">
 							{!!$country->countryEducation[0]->content!!}
 						</div>
 					</div>
@@ -89,12 +95,13 @@
 				<country-scholarship :country="{{$country->id}}" v-if="type == 'scholarship'">
 
 				</country-scholarship>
-					
-			</div>
-
-
 				
-
+				<div class="col-md-9 col-xs-12 no-padding">
+					<album-slider :country-id="{{$country->id}}">
+						
+					</album-slider>
+				</div>					
+			</div>
 		</div>
 
 	</section>

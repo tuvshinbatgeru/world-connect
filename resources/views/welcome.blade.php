@@ -104,24 +104,10 @@
 							</div>
 						</div>
 						<div class="col-md-12">
-							<div id="container" class="margin-vertical">
-							</div>
-
-							<div id="blueimp-gallery" class="blueimp-gallery">
-							    <div class="slides"></div>
-							    <h3 class="title"></h3>
-							    <a class="prev">‹</a>
-							    <a class="next">›</a>
-							    <a class="close">×</a>
-							    <a class="play-pause"></a>
-							    <ol class="indicator"></ol>
-							</div>
-							
+							<album-slider></album-slider>
 						</div>
 					</div>
 				</div>
-
-				
 
 				<div class="col-md-3">
 					<div class="row">
@@ -182,9 +168,6 @@
 						</div>
 					</div>
 				</div>
-
-
-
 			</div>
 		</div>
 
