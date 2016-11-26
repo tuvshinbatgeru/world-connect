@@ -36,6 +36,15 @@ class CountryController extends Controller
         return view('country')->with(compact('country', 'type'));
     }
 
+    public function forSite()
+    {
+        $countries = Country::all();
+        return Response::json([
+            'code' => 0,
+            'result' => $countries
+        ]);   
+    }
+
     public function counties()
     {
         $countries = Country::all();
@@ -52,6 +61,8 @@ class CountryController extends Controller
         if($request->type != 0) {
             $type = $request->type;
             $query = $query->where('type', $type);
+        } else {
+            $query = $query->where('type', '<>', 2);
         }
 
         $query = $query->with('info')->latest();
@@ -64,7 +75,7 @@ class CountryController extends Controller
 
     public function schools(Country $country, Request $request)
     {
-        $query = $country->schools()->with('degrees');
+        $query = $country->schools()->with('degrees', 'info');
 
         if($request->type != 0) {
             $type = $request->type;
