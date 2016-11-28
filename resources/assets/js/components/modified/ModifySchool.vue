@@ -252,8 +252,6 @@
 				  	if(res.data.code == 0 || (this.editable && this.editable.name == this.school.name)) {
 				  		var fd = new FormData()
 
-				  		debugger
-
 				  		if($('#flagId')[0].files[0])
 							fd.append('flag', $('#flagId')[0].files[0])
 
@@ -274,17 +272,16 @@
 							degree.push(3)
 						}
 
+						fd.append('school_name', this.school.name)
+						fd.append('school_degree', degree)
+						fd.append('country_name', this.school.country)
+						fd.append('school_info', this.$refs.info.getContent())
+
 						var data = {
 							school : this.school,
 							country_name : this.school.country,
 							degree : degree,
 							formData : fd,
-							param : this.$tools.transformParameters({
-								school_name : this.school.name,
-								school_degree : degree,
-								country_name : this.school.country,
-								school_info : this.$refs.info.getContent(),
-					    	})
 						};
 
 
