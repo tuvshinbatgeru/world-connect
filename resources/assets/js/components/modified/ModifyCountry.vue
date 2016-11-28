@@ -226,23 +226,20 @@
 				  	if(res.data.code == 0 || (this.editable && this.editable.name == this.country.name)) {
 				  		var fd = new FormData()
 
-				  		debugger
-
 				  		if($('#flagId')[0].files[0])
 							fd.append('flag', $('#flagId')[0].files[0])
 
 						if($('#backId')[0].files[0])
 							fd.append('cover', $('#backId')[0].files[0])
-						
+
+						fd.append('country_name', this.country.name)
+						fd.append('country_info', this.$refs.info.getContent())
+						fd.append('country_education', this.$refs.education.getContent())
+						fd.append('country_visa', this.$refs.visa.getContent())
+
 						var data = {
 							country : this.country,
 							formData : fd,
-							param : this.$tools.transformParameters({
-								country_name : this.country.name,
-								country_info : this.$refs.info.getContent(),
-								country_education : this.$refs.education.getContent(),
-								country_visa : this.$refs.visa.getContent(),
-					    	})
 						};
 
 
