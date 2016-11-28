@@ -21,7 +21,7 @@
 
 		methods : {
 			getCountries : function () {
-				this.$http.get(this.$env.get('APP_URI') + 'admin/country/list').then(res => {
+				this.$http.get(this.$env.get('APP_URI') + 'admin/country/all').then(res => {
 				  	this.countries = res.data.result.data
 				}).catch(err => {
 				});
