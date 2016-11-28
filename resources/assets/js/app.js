@@ -10,6 +10,7 @@ import IndexView from './components/IndexView.vue'
 import CountryView from './web/CountryView.vue'
 import NewsView from './web/NewsView.vue'
 import SiteHeader from './web/SiteHeader.vue'
+import StudyView from './web/StudyView.vue'
  
 const app = new Vue({
     el: 'body',
@@ -24,7 +25,7 @@ const app = new Vue({
     },
 
     components : {
-    	IndexView, CountryView, NewsView, SiteHeader
+    	IndexView, CountryView, NewsView, SiteHeader, StudyView
     }
 });
 
