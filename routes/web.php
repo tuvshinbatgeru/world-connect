@@ -24,6 +24,9 @@ Route::get('/country/{country}', 'CountryController@currentCountry');
 Route::get('/country/{country}/schools', 'CountryController@schools');
 Route::get('/country/{country}/news', 'CountryController@news');
 
+Route::get('/study', 'NewsController@study');
+Route::get('/study/all', 'NewsController@studies');
+
 Route::get('/album', 'AlbumController@albums');
 Route::get('/album/{album}/photos', 'AlbumController@photos');
 Route::get('/news', 'NewsController@news');
@@ -35,7 +38,7 @@ Route::get('/school', 'SchoolController@schools');
 Route::group(['prefix' => '/admin'], function () {
 	Route::get('/dashboard', 'AdminController@dashboard');
 	
-	Route::get('/country/list', 'CountryController@list');
+	Route::get('/country/all', 'CountryController@all');
 	Route::get('/country/check', 'CountryController@check');
 	Route::get('/country/select', 'CountryController@counties');
 	Route::post('/country/{country}', 'CountryController@update');
@@ -44,16 +47,16 @@ Route::group(['prefix' => '/admin'], function () {
 	Route::delete('/delete', 'AdminController@delete');
 
 
-	Route::get('/school/list', 'SchoolController@list');
+	Route::get('/school/all', 'SchoolController@all');
 	Route::get('/school/check', 'SchoolController@check');
 	Route::post('/school/{school}', 'SchoolController@update');
 	Route::resource('/school', 'SchoolController');
 
-	Route::get('/news/list', 'NewsController@list');
+	Route::get('/news/all', 'NewsController@all');
 	Route::post('/news/{news}', 'NewsController@update');
 	Route::resource('/news', 'NewsController');
 
-	Route::get('/album/list', 'AlbumController@list');
+	Route::get('/album/all', 'AlbumController@all');
 	Route::get('/album/check', 'AlbumController@check');
 	Route::post('/album/photo', 'AlbumController@uploadPhotos');
 	Route::post('/album/{album}', 'AlbumController@update');
