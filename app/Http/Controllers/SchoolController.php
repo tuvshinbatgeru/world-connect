@@ -32,7 +32,7 @@ class SchoolController extends Controller
         ]);
     }
 
-    public function list()
+    public function all()
     {
         $schools = School::with('degrees', 'country')
                          ->latest()->paginate(10);
@@ -76,10 +76,9 @@ class SchoolController extends Controller
      */
     public function store(Request $request)
     {
-        $param = json_decode($request->data);
         $school = new School;
-        $school->name = $param->school_name;
-        $school->country_id = Country::where('name', $param->country_name)->first()->id;
+        $school->name = $request->school_name;
+        $school->country_id = Country::where('name', $request->country_name)->first()->id;
 
         $flag = $request->flag;
         $cover = $request->cover;
@@ -88,13 +87,15 @@ class SchoolController extends Controller
         $school->cover_url = PhotoController::savePhoto($cover, 'school');
         $school->save();
 
-        $this->createContent($school, $param->school_info);
+        $this->createContent($school, $request->school_info);
 
-        $school->degrees()->sync($param->school_degree);
+        $school->degrees()->sync($request->school_degree);
+        $school->country;
+        $school->degrees;
 
         return Response::json([
             'code' => 0,
-            'country' => $school,
+            'result' => $school,
             'message' => 'Амжилттай бүртгэлээ.',
         ]);
     }
@@ -114,7 +115,7 @@ class SchoolController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @request  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -150,11 +151,9 @@ class SchoolController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        $param = json_decode($request->data);
         $school = School::find($id);
-        $school->name = $param->school_name;
-        $school->country_id = Country::where('name', $param->country_name)->first()->id;
+        $school->name = $request->school_name;
+        $school->country_id = Country::where('name', $request->country_name)->first()->id;
 
         $flag = $request->flag;
         $cover = $request->cover;
@@ -171,14 +170,14 @@ class SchoolController extends Controller
 
         DB::table('contentable')->where('contentable_id', $school->id)->where('contentable_type', 'App\\School')->delete();
 
-        $this->createContent($school, $param->school_info);
+        $this->createContent($school, $request->school_info);
 
-        $school->degrees()->sync($param->school_degree);
+        $school->degrees()->sync($request->school_degree);
         $school->degrees;
 
         return Response::json([
             'code' => 0,
-            'school' => $school,
+            'result' => $school,
             'message' => 'Амжилттай засварлалаа.',
         ]);
     }

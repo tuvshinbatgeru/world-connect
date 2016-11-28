@@ -93,7 +93,7 @@ class CountryController extends Controller
         ]);
     }
 
-    public function list()
+    public function all()
     {
         $countries = Country::latest()->paginate(25);
         return Response::json([
@@ -136,11 +136,9 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $param = json_decode($request->data);
         $country = new Country;
-        $country->name = $param->country_name;
-        $country->short_name = $param->country_name;
+        $country->name = $request->country_name;
+        $country->short_name = $request->country_name;
 
         $flag = $request->flag;
         $cover = $request->cover;
@@ -149,15 +147,15 @@ class CountryController extends Controller
         $country->cover_url = PhotoController::savePhoto($cover, 'country');
         $country->save();
 
-        $country->countryInformation()->attach($this->createContent($country, $param->country_info)->id, [
+        $country->countryInformation()->attach($this->createContent($country, $request->country_info)->id, [
             'info_id' => 1
         ]);
 
-        $country->countryEducation()->attach($this->createContent($country, $param->country_education)->id, [
+        $country->countryEducation()->attach($this->createContent($country, $request->country_education)->id, [
             'info_id' => 2
         ]);
 
-        $country->countryVisa()->attach($this->createContent($country, $param->country_visa)->id, [
+        $country->countryVisa()->attach($this->createContent($country, $request->country_visa)->id, [
             'info_id' => 3
         ]);
 
@@ -183,7 +181,7 @@ class CountryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @request  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -194,7 +192,7 @@ class CountryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @request  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit(Country $country)
@@ -219,11 +217,9 @@ class CountryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        $param = json_decode($request->data);
         $country = Country::find($id);
-        $country->name = $param->country_name;
-        $country->short_name = $param->country_name;
+        $country->name = $request->country_name;
+        $country->short_name = $request->country_name;
 
         $flag = $request->flag;
         $cover = $request->cover;
@@ -241,15 +237,15 @@ class CountryController extends Controller
         DB::table('country_info')->where('country_id', $id)->delete();
         DB::table('contentable')->where('contentable_id', $country->id)->where('contentable_type', 'App\\Country')->delete();
 
-        $country->countryInformation()->attach($this->createContent($country, $param->country_info)->id, [
+        $country->countryInformation()->attach($this->createContent($country, $request->country_info)->id, [
             'info_id' => 1
         ]);
 
-        $country->countryEducation()->attach($this->createContent($country, $param->country_education)->id, [
+        $country->countryEducation()->attach($this->createContent($country, $request->country_education)->id, [
             'info_id' => 2
         ]);
 
-        $country->countryVisa()->attach($this->createContent($country, $param->country_visa)->id, [
+        $country->countryVisa()->attach($this->createContent($country, $request->country_visa)->id, [
             'info_id' => 3
         ]);
 

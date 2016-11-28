@@ -51,7 +51,7 @@
 			},
 
 			getAlbums : function () {
-				this.$http.get(this.$env.get('APP_URI') + 'admin/album/list?page=' + this.pageIndex + 
+				this.$http.get(this.$env.get('APP_URI') + 'admin/album/all?page=' + this.pageIndex + 
 					'&filter=' + this.selectedFilter + '&country=' + this.country).then(res => {
 				  	this.albums = res.data.result.data
 				  	this.total = res.data.result.total

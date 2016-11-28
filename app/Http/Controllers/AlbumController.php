@@ -51,7 +51,7 @@ class AlbumController extends Controller
         ]);
     }
 
-    public function list(Request $request)
+    public function all(Request $request)
     {
         $query = Album::with('pinnedPhoto', 'country')
                       ->withCount('photos');

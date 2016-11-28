@@ -1,9 +1,9 @@
 <template>
 	<div class="slide" :style="'background-image:url(' + item.cover_url + ')'">
 		<div class="cntr-fluid relative">
-			<div class="social-container">
+			<!-- <div class="social-container">
 				Хуваалцах <i class="fa fa-facebook-official"></i> <i class="fa fa-twitter-square"></i>
-			</div>
+			</div> -->
 			<div class="news-container">
 				<div class="news-title">
 					<a :href="'/news/' + item.id">{{item.title}}</a>
@@ -64,6 +64,13 @@
 		margin: 10px 0px;
 		font-size: 20px;
 		font-weight: 800;	
+		a {
+			color: #fff;
+			&:hover {
+				text-decoration: none;
+				color: #fff;
+			}
+		}
 	}
 	.news-description {
 		margin: 10px 0px;

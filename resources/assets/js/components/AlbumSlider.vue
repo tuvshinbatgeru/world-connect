@@ -1,15 +1,23 @@
 <template>
-	<div id="container" class="margin-vertical">
-	</div>
+	<div class="feed-container mini">
+		<div class="feed-title">
+			Зургийн цомог
+		</div>
+		<div class="content-container">
+			<div id="container" class="margin-vertical">
+			</div>
 
-	<div id="blueimp-gallery" class="blueimp-gallery">
-	    <div class="slides"></div>
-	    <h3 class="title"></h3>
-	    <a class="prev">‹</a>
-	    <a class="next">›</a>
-	    <a class="close">×</a>
-	    <a class="play-pause"></a>
-	    <ol class="indicator"></ol>
+			<div id="blueimp-gallery" class="blueimp-gallery">
+			    <div class="slides"></div>
+			    <h3 class="title"></h3>
+			    <a class="prev">‹</a>
+			    <a class="next">›</a>
+			    <a class="close">×</a>
+			    <a class="play-pause"></a>
+			    <ol class="indicator"></ol>
+			</div>
+
+		</div>
 	</div>
 </template>
 <script>

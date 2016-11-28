@@ -4,7 +4,7 @@
 				<div class="wc-nav">
 					<ul>
 						<li class="active">
-							<a>
+							<a href="/">
 								Нүүр хуудас
 							</a>
 						</li>
@@ -29,7 +29,7 @@
 			</div>
 		</div>
 		<div class="wc-nav-logo">
-			<img src="{{ asset('images/logo-wc-vertical.png') }}" height="100" />
+			<img :src="siteLogo" height="100" />
 		</div>
 		<hr class="header-seperator"></hr>
 		<div style="width: 100%;position: relative;">
@@ -37,20 +37,23 @@
 				<div class="wc-content-nav">
 					<ul>
 						<li @mouseover="mouseOver('country')" @mouseout="mouseOut()" class="active">
-							<a>Зуучлах улсууд</a>
+							<a>Улсууд</a>
 						</li>
 						<li @mouseover="mouseOver('schools')" @mouseout="mouseOut()">
 							<a>Сургуулиуд</a>
 						</li>
-						<li @mouseover="mouseOver('scholar')" @mouseout="mouseOut()">
-							<a href="/news?type=scolarship">Тэтгэлэгт хөтөлбөр</a>
-						</li>
+
 						<li @mouseover="mouseOver('visa')" @mouseout="mouseOut()">
 							<a>Визний мэдээлэл</a>
 						</li>
+
 						<li @mouseover="mouseOver('english')" @mouseout="mouseOut()">
-							<a>Англи хэлний сургалт</a>
+							<a href="/study">Англи хэлний сургалт</a>
 						</li>
+						<li @mouseover="mouseOver('scholar')" @mouseout="mouseOut()">
+							<a href="/news?type=scolarship">Тэтгэлэгт хөтөлбөр</a>
+						</li>
+						
 						<li>
 							<a href="/news?type=news">Мэдээлэл</a>
 						</li>
@@ -94,6 +97,7 @@
 				countries : [],
 				hovered : false,
 				selectedMenu : {},
+				siteLogo : this.$env.get('APP_URI') + '/images/logo-wc-vertical.png'
 			}
 		},	
 

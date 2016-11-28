@@ -1,5 +1,5 @@
 <template>
-	<div class="row" id="country-panel" >
+	<div class="row" id="country-panel">
 		<div class="col-md-9">
 			<div class="card">
 				<div class="header">
@@ -202,15 +202,14 @@
 				if($('#coverId')[0].files[0])
 						fd.append('cover', $('#coverId')[0].files[0])
 
+				fd.append('title', this.news.title)
+				fd.append('type', this.news.type)
+				fd.append('country', this.news.country)
+				fd.append('news_description', this.news.description)
+				fd.append('news_info', this.$refs.info.getContent())
+
 				var data = {
 					formData : fd,
-					param : this.$tools.transformParameters({
-						title : this.news.title,
-						type : this.news.type,
-						country : this.news.country,
-						news_description : this.news.description,
-						news_info : this.$refs.info.getContent(),
-				   	})
 				};
 
 				if(this.editable)

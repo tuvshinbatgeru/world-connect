@@ -30,7 +30,7 @@ class NewsController extends Controller
         return view('news')->with(compact('news'));
     }
 
-    public function list(Request $request)
+    public function all(Request $request)
     {
         if(isset($request->type)) {
             if($request->type < 5)
@@ -92,6 +92,21 @@ class NewsController extends Controller
         ]);
     }
 
+    public function study(Request $request)
+    {
+        return view('study');
+    }
+
+    public function studies(Request $request)
+    {
+        $studies = News::where('type', 4)->paginate(3);
+
+        return Response::json([
+            'code' => 0,
+            'result' => $studies,
+        ]);
+    }
+
     public function news(Request $request)
     {
         if(isset($request->type)) {
@@ -105,7 +120,7 @@ class NewsController extends Controller
             }
 
         } else {
-            $news = News::with('info')->latest()->limit(5)->get();
+            $news = News::with('info')->latest()->limit(4)->get();
         }
 
         return Response::json([
@@ -132,12 +147,10 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $param = json_decode($request->data);
         $news = new News;
-        $news->title = $param->title;
-        $news->type = $param->type;
-        $news->country_id = $param->country;
+        $news->title = $request->title;
+        $news->type = $request->type;
+        $news->country_id = $request->country;
         $news->visit_count = 0;
         $news->is_pinned = 'N';
         $cover = $request->cover;
@@ -146,7 +159,7 @@ class NewsController extends Controller
 
         $news->save();
 
-        $this->createContent($news, $param->news_info, $param->news_description);
+        $this->createContent($news, $request->news_info, $request->news_description);
 
         return Response::json([
             'code' => 0,
@@ -206,11 +219,10 @@ class NewsController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $param = json_decode($request->data);
         $news = News::find($id);
-        $news->title = $param->title;
-        $news->type = $param->type;
-        $news->country_id = $param->country;
+        $news->title = $request->title;
+        $news->type = $request->type;
+        $news->country_id = $request->country;
 
         $cover = $request->cover;
 
@@ -222,7 +234,7 @@ class NewsController extends Controller
 
         DB::table('contentable')->where('contentable_id', $news->id)->where('contentable_type', 'App\\News')->delete();
 
-        $this->createContent($news, $param->news_info, $param->news_description);
+        $this->createContent($news, $request->news_info, $request->news_description);
 
         return Response::json([
             'code' => 0,
@@ -234,7 +246,7 @@ class NewsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @request  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

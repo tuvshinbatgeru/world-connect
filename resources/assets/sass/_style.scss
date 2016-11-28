@@ -1174,6 +1174,13 @@ body {
 }
 
 //
+.modal-content {
+	min-height: 500px !important;
+	p {
+		min-height: 500px;
+	}
+}
+
 
 //media 
 $mobile-width: 750px;

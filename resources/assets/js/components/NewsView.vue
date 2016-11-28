@@ -45,7 +45,6 @@
 
 		methods : {
 			togglePin : function (news) {
-				debugger
 				this.$http.post(this.$env.get('APP_URI') + 'news/' + news.id + '/pinned').then(res => {
 				  	news.is_pinned = res.data.result
 				}).catch(err => {
@@ -63,7 +62,7 @@
 			},
 
 			getNews : function () {
-				this.$http.get(this.$env.get('APP_URI') + 'admin/news/list?page=' + this.pageIndex + 
+				this.$http.get(this.$env.get('APP_URI') + 'admin/news/all?page=' + this.pageIndex + 
 					(this.type != 0 ? '&type=' + this.type : '')).then(res => {
 				  	this.information = res.data.result.data
 				  	this.total = res.data.result.total
@@ -99,7 +98,7 @@
 
 			saveNews : function (data) {
 				this.$http.post(
-					this.$env.get('APP_URI') + 'admin/news?data=' + data.param, data.formData
+					this.$env.get('APP_URI') + 'admin/news', data.formData
 				).then(res => {
 					if(res.data.code == 0) {
 						this.information.push(res.data.result)
