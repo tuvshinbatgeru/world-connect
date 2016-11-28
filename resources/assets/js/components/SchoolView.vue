@@ -21,7 +21,7 @@
 
 		methods : {
 			getSchools : function () {
-				this.$http.get(this.$env.get('APP_URI') + 'admin/school/list').then(res => {
+				this.$http.get(this.$env.get('APP_URI') + 'admin/school/all').then(res => {
 				  	this.schools = res.data.result.data
 				}).catch(err => {
 				});
@@ -38,9 +38,9 @@
 					data.formData
 				).then(res => {
 					if(res.data.code == 0) {
-						this.schoolInstance.name = res.data.school.name
+						this.schoolInstance.name = res.data.result.name
 						this.schoolInstance.country.name = data.country_name
-						this.schoolInstance.degrees = res.data.school.degrees
+						this.schoolInstance.degrees = res.data.result.degrees
 
 						this.showSchoolModify = false		
 						this.$root.$refs.notify.notify(res.data.message,{
@@ -60,8 +60,9 @@
 					data.formData
 				).then(res => {
 					if(res.data.code == 0) {
-						this.schools.push(res.data.result)
 
+						var school = res.data.result
+						this.schools.push(school)
 						this.showSchoolModify = false		
 						this.$root.$refs.notify.notify(res.data.message,{
 							closeable : false
