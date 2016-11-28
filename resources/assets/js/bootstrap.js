@@ -22,8 +22,10 @@ require('vue-resource');
 
 const moment = require('moment')
 require('moment/locale/en-au')
+import Paginate from './mixins/Paginate.vue'
 
 Vue.use(require('vue-moment'), { moment })
+Vue.component('Paginate', Paginate)
 
 //global storage
 import _env from '../../../env.js'
