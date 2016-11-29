@@ -1,4 +1,4 @@
-@extends('layouts.index-layout', ['currentView' => 'news-view'])
+@extends('layouts.news-layout', ['currentView' => 'news-view'])
 @section('content') 
 	<section class="content">
 	<div class="country-cover" style="background-image: url('{{$news->cover_url}}')">
@@ -31,9 +31,32 @@
 	  js = d.createElement(s); js.id = id;
 	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
 	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
+	}(document, 'script', 'facebook-jssdk'));
 
-	<a href="http://www.facebook.com/sharer/sharer.php?u=http://192.168.1.6/news/1">test</a>
+	 window.twttr = (function(d, s, id) {
+          var t, js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s);
+          js.id = id;
+          js.src = "https://platform.twitter.com/widgets.js";
+          fjs.parentNode.insertBefore(js, fjs);
+          return window.twttr || (t = {
+            _e: [],
+            ready: function(f) {
+              t._e.push(f)
+            }
+          });
+        }(document, "script", "twitter-wjs"));
+
+	</script>
+
+	<div class="fb-share-button" 
+		data-href="http://192.168.1.6/news/1" 
+		data-layout="button_count">
+	</div>
+
+	<a href="https://twitter.com/intent/tweet?text={{$news->title}}&url=http://worldconnect.mn/news/{{$news->id}}">Жиргэх
+	</a>
 
 	</section>
 @stop

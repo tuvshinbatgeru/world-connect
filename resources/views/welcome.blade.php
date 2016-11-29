@@ -71,7 +71,7 @@
 									</div>
 									<div class="content">
 										<div class="content-title">
-											@{{news.title}}
+											<a :href="'/news/' + news.id">@{{news.title}}</a>
 											<label class="date">
 												@{{news.created_at | moment 'from'}}
 											</label>
