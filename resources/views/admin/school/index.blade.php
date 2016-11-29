@@ -72,6 +72,12 @@
 		                    </tr>   	
 		                </tbody>
 		            </table>
+		            <paginate :paginate="10" 
+		            		  v-ref:paginate
+		            		  :total.sync="total"
+		            		  @page-changed="pageChanged"
+		            >
+		            </paginate>
 		        </div>
 		    </div>
 		</div>
