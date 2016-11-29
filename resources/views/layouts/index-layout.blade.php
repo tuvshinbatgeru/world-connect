@@ -30,7 +30,7 @@
 						</div>
 						<hr></hr>
 						<div class="social">
-							<a class="facebook">
+							<a href="https://www.facebook.com/worldconnect.international" class="facebook">
 								<i class="fa fa-facebook"></i>
 							</a>
 							<a class="twitter">
