@@ -15,12 +15,6 @@
 	            </div>
 
 	            <ul class="nav">
-            		<li class="{{$currentView == 'dashboard-view' ? 'active' : ''}}">
-	                    <a href="/admin/dashboard">
-	                        <i class="pe-7s-graph"></i>
-	                        <p>Хяналт</p>
-	                    </a>
-	                </li>
 	                <li class="{{$currentView == 'country-view' ? 'active' : ''}}">
 	                    <a href="/admin/country">
 	                        <i class="pe-7s-graph"></i>
@@ -72,8 +66,8 @@
 
 	                    <ul class="nav navbar-nav navbar-right">
 	                        <li>
-	                           <a href="">
-	                               Account
+	                           <a href="/logout">
+	                               Гарах
 	                            </a>
 	                        </li>
 	                    </ul>
@@ -105,7 +99,7 @@
 	                    </ul>
 	                </nav>
 	                <p class="copyright pull-right">
-	                    &copy; 2016 <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+	                    &copy; 2016 <a href="http://simplood.com">Simplood Team</a>
 	                </p>
 	            </div>
 	        </footer>
