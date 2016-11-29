@@ -10,7 +10,7 @@
 					<div class="feed-title">
 						{{$news->title}}
 					</div>
-					<div class="content-container small university" >
+					<div class="content-container small university no-hover" >
 						{!!$news->info[0]->content!!}
 					</div>
 				</div>

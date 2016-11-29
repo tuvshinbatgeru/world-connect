@@ -6,7 +6,7 @@
 				Тэтгэлэгт хөтөлбөрүүд
 			</div>
 
-			<div class="content-container" v-for="news in information">
+			<div class="content-container no-hover" v-for="news in information">
 					<div class="cover-cntr">
 						<div class="cover">
 							<div class="cover-img">

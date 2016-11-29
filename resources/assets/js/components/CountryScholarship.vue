@@ -4,7 +4,7 @@
 			<div class="feed-title">
 				Тэтгэлэг
 			</div>
-			<div class="content-container" v-for="ship in scholerships">
+			<div class="content-container no-hover" v-for="ship in scholerships">
 				<div class="cover-cntr">
 					<div class="cover">
 						<div class="cover-img">

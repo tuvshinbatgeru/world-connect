@@ -17,7 +17,7 @@
 			</div>
 		</div>
 
-		<div class="content-container" :class="$index == 0 ? '' : 'small'" v-for="news in information">
+		<div class="content-container no-hover" :class="$index == 0 ? '' : 'small'" v-for="news in information">
 				<div class="cover-cntr">
 					<div class="cover">
 						<div class="cover-img">
