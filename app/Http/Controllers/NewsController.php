@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Contentable;
 use App\Http\Controllers\PhotoController;
 use App\News;
+use Illuminate\Database\QueryBuilder;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Response;
@@ -16,10 +18,27 @@ class NewsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
         //
         return view('admin.news.index');
+    }
+
+    public function scholarship()
+    {
+        return view('scholarship');
+    }
+
+    public function scholarshipList()
+    {
+        $scholarships = News::where('type', 2)->paginate(10);
+
+        return Response::json([
+            'code' => 0,
+            'result' => $scholarships,
+        ]);
     }
 
     public function currentNews(News $news)
@@ -34,17 +53,24 @@ class NewsController extends Controller
     {
         if(isset($request->type)) {
             if($request->type < 5)
-                $news = News::where('type', $request->type)->latest()->paginate(10);
+                $query = News::where('type', $request->type)->latest();
             else {
-                $news = News::where('is_pinned', 'Y')->orderBy('updated_at', 'ASC')->paginate(10);
+                $query = News::where('is_pinned', 'Y')->orderBy('updated_at', 'ASC');
             }
+        } 
+        else $query = News::query();
 
+
+        if(isset($request->search)) {
+            $searchValue = trim($request->search);
+            $query = $query->where('title', 'like', '%'. $request->search . '%');
         }
-        else $news = News::latest()->paginate(10);
+
+        $query = $query->paginate(10);
         
         return Response::json([
             'code' => 0,
-            'result' => $news
+            'result' => $query,
         ]);
     }
 
@@ -104,6 +130,23 @@ class NewsController extends Controller
         return Response::json([
             'code' => 0,
             'result' => $studies,
+        ]);
+    }
+
+    public function newsPage()
+    {
+        return view('/information');
+    }
+
+    public function information(Request $request)
+    {
+        $query = News::whereNotIn('type', [2, 4]);
+        $query = $query->with('info')->latest();
+        $query = $query->paginate(10);
+
+        return Response::json([
+            'code' => 0,
+            'result' => $query
         ]);
     }
 

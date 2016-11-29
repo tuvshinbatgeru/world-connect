@@ -61,8 +61,9 @@ class CountryController extends Controller
         if($request->type != 0) {
             $type = $request->type;
             $query = $query->where('type', $type);
+        
         } else {
-            $query = $query->where('type', '<>', 2);
+            $query = $query->whereNotIn('type', [2, 4]);
         }
 
         $query = $query->with('info')->latest();
