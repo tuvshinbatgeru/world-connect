@@ -24,15 +24,7 @@
 					</div>
 					<div class="content-info">
 						<div class="row">
-							<div class="col-xs-6">
-								<span class="share social-share facebook">
-									SHARE
-								</span>
-								<span class="tweet social-share twitter">
-									TWEET
-								</span>
-							</div>
-							<div class="col-xs-6 text-right">
+							<div class="col-xs-12 text-right">
 								<span class="view">
 									<i class="fa fa-eye"></i> {{ship.visit_count}}
 								</span>
