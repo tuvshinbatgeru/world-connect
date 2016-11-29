@@ -14,12 +14,13 @@
 				showNewsModify : false,
 				selectedNews : {},
 				newsInstance : {},
-				type : 0
+				type : 0,
+				searchValue : ''
 			}
 		},
 
-		created : function () {
-
+		ready : function () {
+			$('#searchValue')[0].focus()
 		},
 
 		filters : {
@@ -44,6 +45,10 @@
 		},
 
 		methods : {
+			searchAsString : function () {
+				this.getNews()
+			},
+
 			togglePin : function (news) {
 				this.$http.post(this.$env.get('APP_URI') + 'news/' + news.id + '/pinned').then(res => {
 				  	news.is_pinned = res.data.result
@@ -63,7 +68,7 @@
 
 			getNews : function () {
 				this.$http.get(this.$env.get('APP_URI') + 'admin/news/all?page=' + this.pageIndex + 
-					(this.type != 0 ? '&type=' + this.type : '')).then(res => {
+					(this.type != 0 ? '&type=' + this.type : '') + '&search=' + this.searchValue).then(res => {
 				  	this.information = res.data.result.data
 				  	this.total = res.data.result.total
 				}).catch(err => {

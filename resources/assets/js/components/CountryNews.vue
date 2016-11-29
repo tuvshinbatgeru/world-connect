@@ -10,7 +10,7 @@
 					<li @click="filter = 1" :class="filter == 1 ? 'active' : ''">
 						Мэдээлэл
 					</li>
-					<li @click="filter = 2" :class="filter == 2 ? 'active' : ''">
+					<li @click="filter = 3" :class="filter == 3 ? 'active' : ''">
 						Зар
 					</li>
 				</ul>
