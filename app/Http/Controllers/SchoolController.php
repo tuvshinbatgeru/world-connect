@@ -25,7 +25,7 @@ class SchoolController extends Controller
 
     public function schools()
     {
-        $schools = School::latest()->get();
+        $schools = School::with('info')->latest()->get();
         return Response::json([
             'code' => 0,
             'result' => $schools
