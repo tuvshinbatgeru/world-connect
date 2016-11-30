@@ -32,7 +32,7 @@
 				<div class="wc-content-nav">
 					<ul>
 						<li class="active">
-							<a>Нүүр хуудас</a>
+							<a href="/">Нүүр хуудас</a>
 						</li>
 						<li @mouseover="mouseOver('country')" @mouseout="mouseOut()">
 							<a>Улсууд <i class="fa fa-sort-down"></i></a>
