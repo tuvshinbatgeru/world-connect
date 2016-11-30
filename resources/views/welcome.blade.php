@@ -132,7 +132,7 @@
 							</div>
 							<div class="news">
 								<div class="news-title">
-									@{{news.title}}
+									<a :href="'/news/' + news.id">@{{news.title}}</a>
 								</div>
 
 								<div class="news-brief">
@@ -202,16 +202,7 @@
 				</div>
 			</div>
 		</div>
-
-		<div id="fb-root"></div>
-		<script>(function(d, s, id) {
-		  var js, fjs = d.getElementsByTagName(s)[0];
-		  if (d.getElementById(id)) return;
-		  js = d.createElement(s); js.id = id;
-		  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1549615252014368";
-		  fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));</script>
-
+		
 		<map style="height: 300px; display: block;" 
 		  :center="{lat:47.913995, lng:106.916081}"
 		  :map-type-id="roadmap"
