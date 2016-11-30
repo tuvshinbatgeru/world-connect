@@ -19,6 +19,7 @@
 									Нийтэлсэн огноо 2016  11 сарын 28
 								</div>
 								<div class="col-xs-6 text-right">
+									
 									<div class="fb-share-button" 
 										data-href="http://192.168.1.6/news/1" 
 										data-layout="button_count">

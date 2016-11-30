@@ -10,7 +10,7 @@
 							{{$country->name}}
 						</div>
 						<div class="countr-description">
-							Танд Канад улсын шилдэг 50 сургуулиудаас сонгон суралцах боломж олгож байна.
+							Танд {{$country->name}} улсын шилдэг <strong>{{$country->schools()->count()}}</strong> сургуулиудаас сонгон суралцах боломж олгож байна.
 						</div>
 					</div>
 				</div>

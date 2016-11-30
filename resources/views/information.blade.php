@@ -7,7 +7,7 @@
 					Мэдээ, Мэдээлэлүүд
 				</div>
 
-				<div class="content-container @{{ $index != 0 ? 'small' : ''}}" v-for="news in information">
+				<div class="no-hover content-container @{{ $index != 0 ? 'small' : ''}}" v-for="news in information">
 						<div class="cover-cntr">
 							<div class="cover">
 								<div class="cover-img">
