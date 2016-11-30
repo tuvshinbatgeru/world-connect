@@ -29,7 +29,9 @@ Vue.component('Paginate', Paginate)
 
 //global storage
 import _env from '../../../env.js'
+import Tools from './Core/Tools.js'
 Vue.use(require('vue-env'), _env)
+Vue.use(Tools)
 
 
 var imagesLoaded = require('imagesloaded')
