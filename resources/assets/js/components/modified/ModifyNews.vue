@@ -57,7 +57,7 @@
 									<label for="coverId" class="btn btn-info btn-fill">Нүүр зураг сонгох</label>
 									<br/>
 									<input style="display:none" id="coverId" name="flag" type="file"/>	
-									<img id="coverImage" class="flag--temp" src="/images/site/default_flag.png" alt="Далбаа" />	
+									<img id="coverImage" class="back--temp" src="/images/site/news_default.png" alt="Далбаа" />	
 								</div>
 							</div>
 						</div>

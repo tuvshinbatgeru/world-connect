@@ -22,14 +22,14 @@
 									<label for="flagId" class="btn btn-info btn-fill">Лого сонгох</label>
 									<br/>
 									<input id="flagId" name="logo" type="file"/>	
-									<img id="flagImage" class="flag--temp" src="/images/site/default_flag.png" alt="Далбаа" />	
+									<img id="flagImage" class="flag--temp" src="/images/site/logo_default.png" alt="Далбаа" />	
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="backId" class="btn btn-info btn-fill">Арын зураг солих</label>
 									<input id="backId" name="cover" type="file"/>
-									<img id="backImage" class="back--temp" src="/images/site/country_cover.jpg" alt="Арын зураг" />
+									<img id="backImage" class="back--temp" src="/images/site/country_default.png" alt="Арын зураг" />
 								</div>
 							</div>
 						</div>

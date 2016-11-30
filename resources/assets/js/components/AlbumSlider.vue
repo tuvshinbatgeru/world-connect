@@ -1,5 +1,5 @@
 <template>
-	<horizontal-slide :slide-width="230" :slide-height="350" width-type="px" :step="1" :items="albums" :bullet="0">
+	<horizontal-slide :slide-width="270" :slide-height="350" width-type="px" :step="1" :items="albums" :bullet="0">
 </template>
 <script>
 	import HorizontalSlide from './slider/HorizontalSlide.vue'
