@@ -9,18 +9,10 @@
 				<div class="content">
 					<form enctype="multipart/form-data">
 						<div id="news-name" class="row">
-							<div class="col-md-6">
+							<div class="col-md-12">
 								<div class="form-group">
 									<label>Гарчиг</label>
 									<input class="form-control" v-model="news.title" type="text" placeholder="гарчиг ...">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="coverId" class="btn btn-info btn-fill">Нүүр зураг сонгох</label>
-									<br/>
-									<input style="display:none" id="coverId" name="flag" type="file"/>	
-									<img id="coverImage" class="flag--temp" src="/images/site/default_flag.png" alt="Далбаа" />	
 								</div>
 							</div>
 						</div>
@@ -59,10 +51,20 @@
 							</div>
 						</div>
 
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<label for="coverId" class="btn btn-info btn-fill">Нүүр зураг сонгох</label>
+									<br/>
+									<input style="display:none" id="coverId" name="flag" type="file"/>	
+									<img id="coverImage" class="flag--temp" src="/images/site/default_flag.png" alt="Далбаа" />	
+								</div>
+							</div>
+						</div>
 						<div id="news-info" class="row">
 							<div class="col-md-12">
 								<div class="form-group">
-									<textarea rows="5" 
+									<textarea rows="5" maxlength="300" 
 											  class="form-control"
 											  style="resize: none; color: #666666"
 											  v-model="news.description"
@@ -222,8 +224,8 @@
 </script>
 <style lang="scss">
 	.flag--temp {
-		width: 150px;
-		height: 100px;
+		height: 100px !important;
+		width: auto !important;
 	}
 	.back--temp {
 		width: 100%;

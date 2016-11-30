@@ -13,11 +13,13 @@
 	        <div class="content table-responsive table-full-width">
 	            <table class="table table-hover table-striped">
 	                <thead>
-	                    <tr><th>Нэр</th>
-	                	<th>Далбаа</th>
-	                	<th>Засах</th>
-	                	<th>Устгах</th>
-	                </tr></thead>
+	                    <tr>
+		                    <th>Нэр</th>
+		                	<th>Далбаа</th>
+		                	<th>Засах</th>
+		                	<th>Устгах</th>
+	                	</tr>
+	                </thead>
 	                <tbody>
 	                	@foreach ($countries as $country)
 							<tr>

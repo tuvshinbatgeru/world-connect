@@ -31,14 +31,14 @@
 
 	<div v-show="!showSchoolModify">
 		<div class="col-md-12">
-			<a @click="newSchool()" class="btn btn-info btn-fill">
-				Нэмэх
-			</a>	
-		</div>
-		<div class="col-md-12">
 			<div class="card">
 		        <div class="header">
-		            <h4 class="title">Сургуулийн жагсаалт</h4>
+		            <h4 class="title">
+		            	Сургуулийн жагсаалт
+		            	<a @click="newSchool()" class="btn btn-info btn-fill pull-right">
+							Нэмэх
+						</a>
+		            </h4>
 		        </div>
 
 		        <div class="content table-responsive table-full-width">
@@ -60,12 +60,12 @@
 		                    		</span>
 		                    	</td>
 		                    	<td>
-		                    		<a @click="updateSchool(school)">
+		                    		<a class="orange-link" @click="updateSchool(school)">
 		                    			<i class="fa fa-edit"></i>
 		                    		</a>
 		                    	</td>
 		                    	<td>
-		                    		<a @click="setSchool(school)" href="#myModal1" data-target="#myModal1" data-toggle="modal">
+		                    		<a class="orange-link" @click="setSchool(school)" href="#myModal1" data-target="#myModal1" data-toggle="modal">
 		                    			<i class="fa fa-trash"></i>
 		                    		</a>
 		                    	</td>

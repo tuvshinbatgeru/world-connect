@@ -56,18 +56,18 @@
 	                    <a class="navbar-brand" href="#">Админ</a>
 	                </div>
 	                <div class="collapse navbar-collapse">
-	                    <ul class="nav navbar-nav navbar-left">
+	                    <!-- <ul class="nav navbar-nav navbar-left">
 	                        <li>
 	                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 	                                <i class="fa fa-dashboard"></i>
 	                            </a>
 	                        </li>
-	                    </ul>
+	                    </ul> -->
 
 	                    <ul class="nav navbar-nav navbar-right">
 	                        <li>
 	                           <a href="/logout">
-	                               Гарах
+	                             	<i class="fa fa-sign-out"></i>  Гарах
 	                            </a>
 	                        </li>
 	                    </ul>

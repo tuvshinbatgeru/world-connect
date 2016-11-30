@@ -31,35 +31,35 @@
 
 	<div v-show="!showCountryModify" v-cloak>
 		<div class="col-md-12">
-			<a @click="newCountry()" class="btn btn-info btn-fill">
-				Нэмэх
-			</a>	
-		</div>
-		<div class="col-md-12">
 			<div class="card">
 		        <div class="header">
-		            <h4 class="title">Улсын жагсаалт</h4>
+		            <h4 class="title">
+		            	Улсын жагсаалт
+						<a @click="newCountry()" class="btn btn-info btn-fill btn-warning pull-right">
+							Нэмэх
+						</a>
+		            </h4>
 		        </div>
 
 		        <div class="content table-responsive table-full-width">
 		            <table class="table table-hover table-striped">
 		                <thead>
 		                    <tr><th>Нэр</th>
-		                	<th>Далбаа</th>
-		                	<th>Засах</th>
-		                	<th>Устгах</th>
+		                	<th style="width: 120px;">Далбаа</th>
+		                	<th style="width: 80px;">Засах</th>
+		                	<th style="width: 80px;">Устгах</th>
 		                </tr></thead>
 		                <tbody>
 							<tr v-for="country in countries">
 		                    	<td>@{{country.name}}</td>
 		                    	<td><img style="heigth:32px; width: 32px;" :src="country.flag_url"/></td>
 		                    	<td>
-		                    		<a @click="updateCountry(country)">
+		                    		<a class="orange-link" @click="updateCountry(country)">
 		                    			<i class="fa fa-edit"></i>
 		                    		</a>
 		                    	</td>
 		                    	<td>
-		                    		<a @click="setCountry(country)" href="#myModal1" data-target="#myModal1" data-toggle="modal">
+		                    		<a class="orange-link" @click="setCountry(country)" href="#myModal1" data-target="#myModal1" data-toggle="modal">
 		                    			<i class="fa fa-trash"></i>
 		                    		</a>
 		                    	</td>

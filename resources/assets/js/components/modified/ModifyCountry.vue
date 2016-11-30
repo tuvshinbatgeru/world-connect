@@ -4,6 +4,8 @@
 			<div class="card">
 				<div class="header">
 					<h4 class="title"> Улс нэмэх
+					<a @click="cancel()" class="btn btn-info btn-fill btn-warning pull-right">Буцах</a>
+					<a @click="save()" style="margin-right: 10px;" class="btn btn-info btn-fill btn-warning pull-right">Хадгалах</a>
 					</h4>
 				</div>
 				<div class="content">
@@ -19,7 +21,7 @@
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="flagId" class="btn btn-info btn-fill">Далбаа сонгох</label>
+									<label for="flagId" class="btn btn-info btn-fill btn-warning">Далбаа сонгох</label>
 									<br/>
 									<input id="flagId" name="flag" type="file"/>	
 									<img id="flagImage" class="flag--temp" src="/images/site/default_flag.png" alt="Далбаа" />	
@@ -27,7 +29,7 @@
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="backId" class="btn btn-info btn-fill">Арын зураг солих</label>
+									<label for="backId" class="btn btn-info btn-fill btn-warning">Арын зураг солих</label>
 									<input id="backId" name="cover" type="file"/>
 									<img id="backImage" class="back--temp" src="/images/site/country_cover.jpg" alt="Далбаа" />
 								</div>
@@ -67,8 +69,8 @@
 							</div>
 						</div>
 
-						<a @click="save()" class="btn btn-info btn-fill pull-right">Хадгалах</a>
-						<a @click="cancel()" class="btn btn-info btn-fill pull-right" style="margin-right: 5px;">Буцах</a>
+						
+						
 						<div class="clearfix"></div>
 					</form>
 				</div>

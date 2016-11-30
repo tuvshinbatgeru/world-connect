@@ -43,7 +43,7 @@
               font-family: "Roboto", sans-serif;
               text-transform: uppercase;
               outline: 0;
-              background: #ff3c00;
+              background: #ff5221;
               width: 100%;
               border: 0;
               padding: 15px;
@@ -54,7 +54,7 @@
               cursor: pointer;
             }
             .form button:hover,.form button:active,.form button:focus {
-              background: #e03500;
+              background: #FFA534;
             }
             .form img {
                 margin-top: -30px;
@@ -104,10 +104,10 @@
             }
             body {
               background: #76b852; /* fallback for old browsers */
-              background: -webkit-linear-gradient(right, #ff3c00, #ff5500);
-              background: -moz-linear-gradient(right, #ff3c00, #ff5500);
-              background: -o-linear-gradient(right, #ff3c00, #ff5500);
-              background: linear-gradient(to left, #ff3c00, #ff5500);
+              background: -webkit-linear-gradient(right, #FFA534, #ff5221);
+              background: -moz-linear-gradient(right, #FFA534, #ff5221);
+              background: -o-linear-gradient(right, #FFA534, #ff5221);
+              background: linear-gradient(to left,  #FFA534, #ff5221);
               font-family: "Roboto", sans-serif;
               -webkit-font-smoothing: antialiased;
               -moz-osx-font-smoothing: grayscale;      

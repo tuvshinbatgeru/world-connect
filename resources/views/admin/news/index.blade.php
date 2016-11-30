@@ -30,11 +30,6 @@
 
 	<div v-show="!showNewsModify">
 		<div class="row">
-			<div class="col-md-6 pull-left">
-				<a @click="newNews()" class="btn btn-info btn-fill">
-					Нэмэх
-				</a>	
-			</div>
 			<div class="col-md-6 pull-right">
 				<div class="row">
 					<div class="col-md-6">
@@ -72,7 +67,12 @@
 		<div class="col-md-12">
 			<div class="card">
 		        <div class="header">
-		            <h4 class="title">Мэдээний жагсаалт</h4>
+		            <h4 class="title">
+		            	Мэдээний жагсаалт
+		            	<a @click="newNews()" class="btn btn-info btn-fill pull-right">
+							Нэмэх
+						</a>
+		            </h4>
 		        </div>
 
 		        <div class="content table-responsive table-full-width">
@@ -96,7 +96,7 @@
 		                    	</td>
 		                    	<td>
 		                    		<a @click="togglePin(news)" style="font-size : 14px">
-		                    			<i class="fa" 
+		                    			<i class="fa" style="cursor: pointer"
 		                    			   :class="news.is_pinned == 'Y' ? 'fa-check-circle' : 'fa-check'" 
 		                    			   :style="{color: news.is_pinned == 'Y' ? 'green' : '#87CB16'}"></i>
 		                    		</a>
