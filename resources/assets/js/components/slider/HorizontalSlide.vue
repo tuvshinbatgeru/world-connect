@@ -24,6 +24,7 @@
 	import PrimaryPlanContext from './context/PrimaryPlanContext.vue'
 	import PrimarySlide from './context/PrimarySlide.vue'
 	import AlbumSlide from './context/AlbumSlide.vue'
+	import SchoolContext from './context/SchoolContext.vue'
 
 	export default {
 		props: {
@@ -115,7 +116,7 @@
 		},
 
 		components : {
-			PrimaryPlanContext, PrimarySlide, AlbumSlide
+			PrimaryPlanContext, PrimarySlide, AlbumSlide, SchoolContext
 		}
 	}
 </script>
