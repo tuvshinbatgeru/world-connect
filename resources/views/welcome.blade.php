@@ -16,12 +16,12 @@
 				<div class="row">
 					<div class="col-md-12 text-center ">
 						<div class="countries-ad">
-							<h2><i class="fa fa-globe"></i> Суралцуулах улсууд</h2>
-							<h3>
-								Бид таны цагийг хэмнэн, төгс цогц үйлчилгээг хурдан шуурхай үзүүлнэ
-							</h3>
+							<h2><i class="fa fa-globe"></i> УЛСУУД</h2>
+							<h4>
+								ЗӨВ СОНГОЛТ АМЖИЛТЫН ҮНДЭС
+							</h4>
 							<p>
-								Та гадаадад сурах хүсэл мөрөөдөлтэй хэдий ч яг аль улсад сурахаа шийдэж чадахгүй байна уу ? Тэгвэл таныг сонголт хийхэд манай компани туслах болно.
+								Дэлхийн өндөр хөгжилтэй улс орнуудад суралцах, аялах, амьдрах боломжийг<br/> "World Connect" Олон Улсын Боловсролын Агентлаг таньд санал болгож байна.
 							</p>
 						</div>
 					</div>
@@ -90,7 +90,7 @@
 			</div>
 			<div class="cntr-fluid">
 				<p>
-					Та бүхэн манай байгууллагыг сонгосноороо бидэнтэй хамтран ажилладаг олон улсад хүлээн зөвшөөрөгдсөн их дээд сургууль, коллеж, хэлний бэлтгэлийн төвүүдээс сонгон, хүссэн хямд зардлаар чанартай боловсрол эзэмших, суралцангаа аялж, амьдрах, боломжийг олгож байна.
+					Олон улсад хүлээн зөвшөөрөгдсөн Их дээд сургууль, коллеж, хэлний бэлтгэлүүдээс сонгон суралцаж, чанартай боловсрол эзэмших нь таны ирээдүйн хамгийн том баталгаат хөрөнгө оруулалт юм.
 				</p>
 			</div>
 			<div class="cntr-fluid">
@@ -113,9 +113,6 @@
 				<h3>
 					СҮҮЛД НЭМЭГДСЭН МЭДЭЭЛЭЛ
 				</h3>
-				<h5>
-					Тэтгэлэг, виз, сургуультай холбоотой мэдээлэл
-				</h5>
 				<hr></hr>
 				<div class="row">
 					<div :class="$index/2 == 0 ? 'col-md-7' : 'col-md-5'" v-for="news in latestNews" style="margin-bottom:15px;">
@@ -143,21 +140,23 @@
 		<div class="album-background">
 			<div class="cntr-fluid">
 				<h3>
-					ТАНЫ ТЭМҮҮЛЭЛ БИДНИЙ АМЖИЛТ
+					ТАНЫ АМЖИЛТ, БИДНИЙ ЗОРИЛГО
 				</h3>
 				<div class="description">
-					Америк, Австрали, Канад зэрэг улсуудруу явсан оюутан залуучууд фото албум
+					“World Connect” агентлагийг сонгон үйлчлүүлсэн оюутан залуусын зургийн цомог
 				</div>
 			</div>
 			<div class="album-container">
-				<album-slider></album-slider>
+				<div class="cntr-fluid">
+					<album-slider></album-slider>
+				</div>
 			</div>
 		</div>
 
 		<!-- album end -->
 
 
-		<div class="cntr-fluid">	
+<!-- 		<div class="cntr-fluid">	
 			<div class="row margin-vertical">
 				<div class="col-md-12">
 					<div class="row">
@@ -167,8 +166,8 @@
 									Сошиал хуудас
 								</div>
 								<div style="padding: 28px 26px;">
-									<!-- <div class="fb-page" data-href="https://www.facebook.com/worldconnect.international" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/facebook" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/facebook">Facebook</a></blockquote>
-									</div> -->
+									<div class="fb-page" data-href="https://www.facebook.com/worldconnect.international" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/facebook" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/facebook">Facebook</a></blockquote>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -194,7 +193,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 
 		<map style="height: 300px; display: block;" 
 		  :center="{lat:47.913995, lng:106.916081}"

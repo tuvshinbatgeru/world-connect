@@ -67,7 +67,7 @@
     text-align: center;
     text-shadow: 0px 0px 2px #000000;
 	.news-title {
-		font-size: 30px;
+		font-size: 42px;
     	font-weight: 400;
 		a {
 			color: #fff;
