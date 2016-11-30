@@ -25,7 +25,7 @@ class SchoolController extends Controller
 
     public function schools()
     {
-        $schools = School::latest()->limit(5)->get();
+        $schools = School::latest()->get();
         return Response::json([
             'code' => 0,
             'result' => $schools
@@ -91,7 +91,10 @@ class SchoolController extends Controller
 
         $this->createContent($school, $request->school_info);
 
-        $school->degrees()->sync($request->school_degree);
+        $degrees = explode(',', $request->school_degree);
+
+        $school->degrees()->sync($degrees);
+        
         $school->country;
         $school->degrees;
 
