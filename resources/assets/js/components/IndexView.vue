@@ -61,6 +61,7 @@
 			getSchools : function () {
 				this.$http.get(this.$env.get('APP_URI') + 'school').then(res => {
 				   this.schools = res.data.result
+				   this.setSchoolContext()
 				}).catch(err => {
 				});
 			},
@@ -88,6 +89,12 @@
 				}).catch(err => {
 
 				});
+			},
+
+			setSchoolContext : function () {
+				_.forEach(this.schools, function (obj) {
+                    obj.context = 'school-context'
+                })
 			},
 
 			setContext : function () {

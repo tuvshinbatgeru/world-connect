@@ -9,7 +9,7 @@
 		</div>
 	</div>
 
-	<div id="blueimp-gallery" class="blueimp-gallery">
+	<div :id="galleryId" class="blueimp-gallery blueimp-gallery-controls">
 	    <div class="slides"></div>
 	    <h3 class="title"></h3>
 	    <a class="prev">‹</a>
@@ -31,17 +31,16 @@
 		data () {
 			return {
 				blueimpInstance : {},
-				masonryContainer : {}
+				galleryId : {}
 			}
+		},
+
+		created : function () {
+			this.galleryId = this.$tools.newId()
 		},
 
 		ready : function () {
 			this.blueimpInstance = blueimp
-			this.masonryContainer = $('#container').masonry({
-			    itemSelector: '.item',
-			    columnWidth: 200,
-			    gutter: 2
-			});
 		},
 
 		methods : {
@@ -56,7 +55,11 @@
             			})
             		});
 
-            	  	blueimp.Gallery(slideItems)
+            	  	blueimp.Gallery(	
+            	  		slideItems, {
+            	  			container : '#' + this.galleryId,
+            	  		}
+            	  	)
             	}).catch(err => {
             	  
             	});
