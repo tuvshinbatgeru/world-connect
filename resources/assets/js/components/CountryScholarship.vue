@@ -1,5 +1,5 @@
 <template>
-	<div class="col-md-9 col-xs-12 no-padding">
+	<div class="col-md-12 col-xs-12 no-padding">
 		<div class="feed-container mini">
 			<div class="feed-title">
 				Тэтгэлэг
