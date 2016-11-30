@@ -36,7 +36,9 @@
 		data () {
 			return {
 				photos : [],
-				pinned : null
+				pinned : null,
+				counter : 0,
+				uploadCount : 0,
 			}
 		},
 
@@ -88,18 +90,30 @@
 						'pinned' : 0,
 					})
 
+					this.counter ++
+
+					if(this.counter == this.uploadCount) {
+						$('#loader').modal('hide')
+					}
+
 					this.photos.push(obj)
 					
 					if(!this.pinned) {
 						this.pinned = this.photos[0]
 					}
 				}).catch(err => {
-
+					$('#loader').modal('hide')
+					this.$root.$refs.notify.notify('Файлын төрөл буруу байна', {
+						closeable : false
+					})
 				});
 			},
 
 			fileUploaded : function (input) {
+				$('#loader').modal('show')
 				var vm = this
+				this.uploadCount = input.files.length
+				this.counter = 0
 				_.forEach(input.files, function (file) {
 					vm.upload(file)
 				})

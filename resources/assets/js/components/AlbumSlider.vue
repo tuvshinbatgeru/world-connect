@@ -1,21 +1,5 @@
 <template>
 	<horizontal-slide :slide-width="230" :slide-height="350" width-type="px" :step="1" :items="albums" :bullet="0">
-
-	<div class="content-container">
-		<div id="container" class="margin-vertical">
-		</div>
-
-		<div id="blueimp-gallery" class="blueimp-gallery">
-		    <div class="slides"></div>
-		    <h3 class="title"></h3>
-		    <a class="prev">‹</a>
-		    <a class="next">›</a>
-		    <a class="close">×</a>
-		    <a class="play-pause"></a>
-		    <ol class="indicator"></ol>
-		</div>
-
-	</div>
 </template>
 <script>
 	import HorizontalSlide from './slider/HorizontalSlide.vue'
@@ -29,50 +13,22 @@
 		data () {
 			return {
 				albums : [],
-				blueimpInstance : {},
-				masonryContainer : {}
 			}
 		},
 
 		created : function () {
 			this.getAlbums()
-			
-		},
-
-		ready : function () {
-			this.blueimpInstance = blueimp
-			this.masonryContainer = $('#container').masonry({
-			    itemSelector: '.item',
-			    columnWidth: 200,
-			    gutter: 2
-			});
 		},
 
 		methods : {
 			getAlbums : function () {
             	this.$http.get(this.$env.get('APP_URI') + 'album?country=' + this.countryId).then(res => {
             	  	this.albums = res.data.result
-            	  	this.calcMasonry()
+            	  	this.setContext()
+            	  	//this.calcMasonry()
             	}).catch(err => {
             	});
             },
-
-            browseAlbum : function (album_id) {
-            	this.$http.get(this.$env.get('APP_URI') + 'album/' + album_id + '/photos').then(res => {
-            		var slideItems = []
-            		_.forEach(res.data.result, function (photo) {
-            			slideItems.push({
-            				title : photo.pivot.caption,
-            				href: photo.url,
-            				thumbnail : photo.url
-            			})
-            		});
-
-            	  	blueimp.Gallery(slideItems)
-            	}).catch(err => {
-            	  
-            	});
-            },	
 
             getMasonryItems : function () {
 				var items = ''
@@ -90,7 +46,6 @@
 
             calcMasonry : function () {
             	var $items = this.getMasonryItems()
-            	this.setContext()
                 var msnry = this.masonryContainer.data('masonry');
 			    var itemSelector = msnry.options.itemSelector;
 			  	// hide by default
@@ -106,6 +61,7 @@
 			    msnry.appended( $item );
 			  });
             },
+
             setContext : function () {
                 _.forEach(this.albums, function (obj) {
                     obj.context = 'album-slide'
