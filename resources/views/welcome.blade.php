@@ -2,8 +2,12 @@
 @section('content') 
 	<section class="content" v-cloak>
 		<div style="width: 100%;">
-			<horizontal-slide :slide-width="100" width-type="%" :step="1" :items="items" :slide-height="475">
-	                
+			<horizontal-slide :slide-width="100" 
+							  width-type="%" 
+							  :step="1" 
+							  :items="items" 
+							  :slide-height="475"
+							  arrow-class="white-arrow">
 	    	</horizontal-slide>
 		</div>
 
@@ -91,25 +95,14 @@
 			</div>
 			<div class="cntr-fluid">
 				<div class="table--display">
-					<div class="table--cell" v-for="school in schools">
-						<div class="university">
-							<table>
-								<tr>
-									<td class="university-img">
-										<div class="cover-img">
-											<img class="fit" :src="school.logo_url"/>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td class="university-name table--cell">
-										@{{school.name}}
-									</td>
-								</tr>
-							</table>
-
-						</div>
-					</div>
+					<horizontal-slide :slide-width="190" 
+									  width-type="px" 
+									  :step="1" 
+									  :items="schools" 
+									  :slide-height="250" 
+									  :bullet="0"
+									  arrow-class="white-arrow">
+	    			</horizontal-slide>
 				</div>
 			</div>
 		</div>
@@ -202,7 +195,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<map style="height: 300px; display: block;" 
 		  :center="{lat:47.913995, lng:106.916081}"
 		  :map-type-id="roadmap"
