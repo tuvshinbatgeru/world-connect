@@ -5,7 +5,7 @@
     @include('includes.index-header')
 </head>
 <body>
-	<site-header>
+	<site-header menu="{{$menu}}">
 		
 	</site-header>
 

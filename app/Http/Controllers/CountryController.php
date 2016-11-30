@@ -33,7 +33,9 @@ class CountryController extends Controller
         $country->countryEducation;
         $country->countryVisa;
 
-        return view('country')->with(compact('country', 'type'));
+        $menu = $type;
+
+        return view('country')->with(compact('country', 'type', 'menu'));
     }
 
     public function forSite()

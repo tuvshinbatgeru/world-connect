@@ -28,7 +28,7 @@ class NewsController extends Controller
 
     public function scholarship()
     {
-        return view('scholarship');
+        return view('scholarship')->with('menu', 'scholar');
     }
 
     public function scholarshipList()
@@ -120,7 +120,7 @@ class NewsController extends Controller
 
     public function study(Request $request)
     {
-        return view('study');
+        return view('study')->with('menu', 'study');
     }
 
     public function studies(Request $request)
@@ -135,7 +135,7 @@ class NewsController extends Controller
 
     public function newsPage()
     {
-        return view('/information');
+        return view('/information')->with('menu', 'information');
     }
 
     public function information(Request $request)
