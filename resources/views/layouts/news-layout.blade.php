@@ -1,6 +1,13 @@
 <!doctype html>
 <html>
 <head>
+	<meta property="og:url"                content="" />
+	<meta property="og:type"               content="Мэдээ" />
+	<meta property="og:title"              content="{{$news->title}}" />
+	<meta property="og:description"        content="{{$news->info[0]->description}}"/>
+	<meta property="og:image"              content="{{$news->cover_url}}" />
+	<meta property="fb:app_id"              content="1549615252014368" />
+
     @include('includes.resource')
     @include('includes.index-header')
 </head>
@@ -30,7 +37,7 @@
 						</div>
 						<hr></hr>
 						<div class="social">
-							<a href="https://www.facebook.com/worldconnect.international" class="facebook">
+							<a class="facebook">
 								<i class="fa fa-facebook"></i>
 							</a>
 							<a class="twitter">

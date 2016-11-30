@@ -62,7 +62,7 @@
 				    </div>
 				    <div class="col-md-6">
 				    	<div class="form-group">
-							<input class="form-control" placeholder="хайх ..." />	
+							<input class="form-control" id="searchValue" @keyup.enter="searchAsString" v-model="searchValue" placeholder="хайх ..." autofocus/>	
 						</div>
 					</div>
 			    </div>	

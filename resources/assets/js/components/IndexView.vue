@@ -74,8 +74,8 @@
 			},
 
 			getCountries : function () {
-				this.$http.get(this.$env.get('APP_URI') + 'admin/country/all').then(res => {
-				  	this.countries = res.data.result.data
+				this.$http.get(this.$env.get('APP_URI') + 'country/site').then(res => {
+				  	this.countries = res.data.result
 				}).catch(err => {
 
 				});

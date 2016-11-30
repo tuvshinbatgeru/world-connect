@@ -15,7 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin', function () {
+Route::post('/login', 'AuthController@login');
+Route::get('/logout', 'AuthController@logout');
+
+Route::get('/login', function () {
+	if(\Auth::check()) {
+		return redirect('admin/country');
+	}	
+
 	return view('admin.index');
 });
 
@@ -27,26 +34,28 @@ Route::get('/country/{country}/news', 'CountryController@news');
 Route::get('/study', 'NewsController@study');
 Route::get('/study/all', 'NewsController@studies');
 
+Route::get('/scholarship', 'NewsController@scholarship');
+Route::get('/scholarship/all', 'NewsController@scholarshipList');
+
 Route::get('/album', 'AlbumController@albums');
 Route::get('/album/{album}/photos', 'AlbumController@photos');
+Route::get('/information', 'NewsController@newsPage');
+Route::get('/information/all', 'NewsController@information');
 Route::get('/news', 'NewsController@news');
 Route::get('/news/{news}', 'NewsController@currentNews');
 Route::get('/news/{news}/related', 'NewsController@related');
 Route::post('/news/{news}/pinned', 'NewsController@togglePin');
 Route::get('/school', 'SchoolController@schools');
 
-Route::group(['prefix' => '/admin'], function () {
-	Route::get('/dashboard', 'AdminController@dashboard');
-	
+Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
 	Route::get('/country/all', 'CountryController@all');
 	Route::get('/country/check', 'CountryController@check');
 	Route::get('/country/select', 'CountryController@counties');
 	Route::post('/country/{country}', 'CountryController@update');
+
 	Route::resource('/country', 'CountryController');
 	Route::post('/upload', 'AdminController@upload');
 	Route::delete('/delete', 'AdminController@delete');
-
-
 	Route::get('/school/all', 'SchoolController@all');
 	Route::get('/school/check', 'SchoolController@check');
 	Route::post('/school/{school}', 'SchoolController@update');

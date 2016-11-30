@@ -51,11 +51,11 @@
 							<a href="/study">Англи хэлний сургалт</a>
 						</li>
 						<li @mouseover="mouseOver('scholar')" @mouseout="mouseOut()">
-							<a href="/news?type=scolarship">Тэтгэлэгт хөтөлбөр</a>
+							<a href="/scholarship">Тэтгэлэгт хөтөлбөр</a>
 						</li>
 						
 						<li>
-							<a href="/news?type=news">Мэдээлэл</a>
+							<a href="/information">Мэдээлэл</a>
 						</li>
 					</ul>
 					<div class="clearfix"></div>
@@ -69,9 +69,11 @@
 							<div class="cover-img">
 								<img class="horizontal" :src="country.cover_url"/>
 							</div>
-							<div class="title">
-								<a :href="'/country/' + country.id"> {{country.name}}</a>
-							</div>
+							<a :href="'/country/' + country.id">
+								<div class="title">
+									{{country.name}}
+								</div>
+							</a>
 						</div>
 					</div>
 
@@ -80,9 +82,11 @@
 							<div class="cover-img">
 								<img class="horizontal" :src="country.cover_url"/>
 							</div>
-							<div class="title">
-								<a :href="'/country/' + country.id + '?type=visa'"> {{country.name}}</a>
-							</div>
+							<a :href="'/country/' + country.id + '?type=visa'">
+								<div class="title">
+									{{country.name}}
+								</div>
+							</a>
 						</div>
 					</div>
 				</div>

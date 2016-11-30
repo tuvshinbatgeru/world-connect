@@ -35,7 +35,9 @@ class SchoolController extends Controller
     public function all()
     {
         $schools = School::with('degrees', 'country')
-                         ->latest()->paginate(10);
+                         ->latest()
+                         ->paginate(10);
+                         
         return Response::json([
             'code' => 0,
             'result' => $schools
@@ -172,7 +174,9 @@ class SchoolController extends Controller
 
         $this->createContent($school, $request->school_info);
 
-        $school->degrees()->sync($request->school_degree);
+        $degrees = explode(',', $request->school_degree);
+
+        $school->degrees()->sync($degrees);
         $school->degrees;
 
         return Response::json([

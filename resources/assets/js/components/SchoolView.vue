@@ -1,7 +1,9 @@
 <script>
 	import ModifySchool from './modified/ModifySchool.vue'
+	import Paginateable from '../mixins/Paginateable'
 
 	export default {
+		mixins : [Paginateable],
 		props : {
 			title : {},
 		},
@@ -20,9 +22,14 @@
 		},
 
 		methods : {
+			pageChanged : function (page) {
+				this.pageIndex = page
+				this.getSchools()
+			},
 			getSchools : function () {
-				this.$http.get(this.$env.get('APP_URI') + 'admin/school/all').then(res => {
+				this.$http.get(this.$env.get('APP_URI') + 'admin/school/all?page=' + this.pageIndex).then(res => {
 				  	this.schools = res.data.result.data
+				  	this.total = res.data.result.total
 				}).catch(err => {
 				});
 			},
@@ -34,7 +41,7 @@
 			editSchool : function (data) {
 				this.$http.post(
 					this.$env.get('APP_URI') + 'admin/school/' 
-					+ this.selectedSchool.id + '?data=' + data.param, 
+					+ this.selectedSchool.id, 
 					data.formData
 				).then(res => {
 					if(res.data.code == 0) {
@@ -56,7 +63,7 @@
 
 			saveSchool : function (data) {
 				this.$http.post(
-					this.$env.get('APP_URI') + 'admin/school?data=' + data.param, 
+					this.$env.get('APP_URI') + 'admin/school', 
 					data.formData
 				).then(res => {
 					if(res.data.code == 0) {

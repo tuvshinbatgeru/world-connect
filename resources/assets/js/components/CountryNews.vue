@@ -10,14 +10,14 @@
 					<li @click="filter = 1" :class="filter == 1 ? 'active' : ''">
 						Мэдээлэл
 					</li>
-					<li @click="filter = 2" :class="filter == 2 ? 'active' : ''">
+					<li @click="filter = 3" :class="filter == 3 ? 'active' : ''">
 						Зар
 					</li>
 				</ul>
 			</div>
 		</div>
 
-		<div class="content-container" :class="$index == 0 ? '' : 'small'" v-for="news in information">
+		<div class="content-container no-hover" :class="$index == 0 ? '' : 'small'" v-for="news in information">
 				<div class="cover-cntr">
 					<div class="cover">
 						<div class="cover-img">
@@ -37,15 +37,7 @@
 					</div>
 					<div class="content-info">
 						<div class="row">
-							<div class="col-xs-6">
-								<span class="share social-share facebook">
-									SHARE
-								</span>
-								<span class="tweet social-share twitter">
-									TWEET
-								</span>
-							</div>
-							<div class="col-xs-6 text-right">
+							<div class="col-xs-12 text-right">
 								<span class="view">
 									<i class="fa fa-eye"></i> {{news.visit_count}}
 								</span>

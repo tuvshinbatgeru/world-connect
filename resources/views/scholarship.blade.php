@@ -1,12 +1,12 @@
-@extends('layouts.index-layout', ['currentView' => 'study-view'])
+@extends('layouts.index-layout', ['currentView' => 'scholar-view'])
 @section('content') 
 	<section class="content" v-cloak>
 		<div class="feed-container mini">
 			<div class="feed-title">
-				Англи хэлний сургалтууд
+				Тэтгэлэгт хөтөлбөрүүд
 			</div>
 
-			<div class="content-container" v-for="news in studies">
+			<div class="content-container no-hover" v-for="news in information">
 					<div class="cover-cntr">
 						<div class="cover">
 							<div class="cover-img">
@@ -31,7 +31,7 @@
 										<i class="fa fa-eye"></i> @{{news.visit_count}}
 									</span>
 									<span class="news-type">
-										Сургалт
+										Тэтгэлэг
 									</span>
 								</div>	
 							</div>

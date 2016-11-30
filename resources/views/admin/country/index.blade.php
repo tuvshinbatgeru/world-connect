@@ -29,7 +29,7 @@
       </div>
     </div>
 
-	<div v-show="!showCountryModify">
+	<div v-show="!showCountryModify" v-cloak>
 		<div class="col-md-12">
 			<a @click="newCountry()" class="btn btn-info btn-fill">
 				Нэмэх
