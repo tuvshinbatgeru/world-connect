@@ -90,7 +90,26 @@
 				<div class="col-md-3 col-sm-6">
 					<div class="footer-item-container">
 						<label>Холбоо барих</label>
-						
+						<table>
+							<tr>
+								<td><i class="fa fa-map-marker"></i></td>
+								<td>
+									Улаанбаатар хот, Сүхбаатар дүүрэг, Гурван гал оффис, 402 тоот
+								</td>
+							</tr>
+							<tr>
+								<td><i class="fa fa-envelope-o"></i></td>
+								<td>
+									WorldConnectmaggie@gmail.com
+								</td>
+							</tr>
+							<tr>
+								<td><i class="fa fa-phone"></i></td>
+								<td>
+									9595-6214, 7000-9101
+								</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 			</div>
