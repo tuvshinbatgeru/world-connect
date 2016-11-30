@@ -32,7 +32,7 @@
 		<div class="countries-background">
 			<div class="cntr-fluid">
 				<div class="row">
-					<div class="col-md-3" v-for="country in countries">
+					<div class="col-md-3 col-sm-6" style="margin-bottom: 15px;" v-for="country in countries">
 						<div class="flip-card country">
 							<div class="cover">
 								<div class="country-flag">
@@ -101,7 +101,7 @@
 									  :items="schools" 
 									  :slide-height="250" 
 									  :bullet="0"
-									  arrow-class="white-arrow">
+									  arrow-class="orange-arrow">
 	    			</horizontal-slide>
 				</div>
 			</div>

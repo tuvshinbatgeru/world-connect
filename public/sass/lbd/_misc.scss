@@ -6,7 +6,7 @@ body,
 }
 a{
   color: $info-color;
-    
+  cursor: pointer;
   &:hover, &:focus{
      color: $info-states-color; 
      text-decoration: none; 
