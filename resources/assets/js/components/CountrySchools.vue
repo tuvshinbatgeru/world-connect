@@ -42,17 +42,11 @@
 		</div>
 
 		<div id="schoolInfo" class="modal" data-easein="fadeIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
-	      <div class="modal-dialog modal-lg">
-	        <div class="modal-content">
-	          <div class="modal-header">
-	            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-	            <h4 class="modal-title" id="myModalLabel">Сургуулийн танилцуулга</h4>
-	          </div>
-	          <div class="modal-body">
-	            {{{selectedSchool.info[0].content}}}
-	          </div>
-	        </div>
-	      </div>
+	      	<div class="cntr-fluid">
+	      		<div class="school-info">
+	            	{{{selectedSchool.info[0].content}}}
+	            </div>
+	       </div>
 	    </div>
 
 	</div>
@@ -99,3 +93,23 @@
 		}
 	}
 </script>
+<style lang="scss">
+
+.modal {
+	padding-right: 0px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+.cntr-fluid {
+	height: 100%;
+}
+.school-info {
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	p {
+		height: 100%;
+	}
+}
+
+</style>
