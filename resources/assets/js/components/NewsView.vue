@@ -80,12 +80,14 @@
 			},
 
 			editNews : function (data) {
+				$('#loader').modal('show')
 				this.$http.post(
 					this.$env.get('APP_URI') + 'admin/news/' 
 					+ this.selectedNews.id + '?data=' + data.param, 
 					data.formData
 				).then(res => {
 					if(res.data.code == 0) {
+						$('#loader').modal('hide')
 						this.newsInstance.title = res.data.result.title
 						this.newsInstance.type = res.data.result.type
 
@@ -95,6 +97,7 @@
 						})
 					}
 				}).catch(err => {
+					$('#loader').modal('hide')
 					this.$root.$refs.notify.notify('Хадгалах явцад алдаа.',{
 						closeable : false
 					})
@@ -102,10 +105,12 @@
 			},
 
 			saveNews : function (data) {
+				$('#loader').modal('show')
 				this.$http.post(
 					this.$env.get('APP_URI') + 'admin/news', data.formData
 				).then(res => {
 					if(res.data.code == 0) {
+						$('#loader').modal('hide')
 						this.information.push(res.data.result)
 
 						this.showNewsModify = false		
@@ -114,6 +119,7 @@
 						})
 					}
 				}).catch(err => {
+					$('#loader').modal('hide')
 					this.$root.$refs.notify.notify('Хадгалах явцад алдаа.',{
 						closeable : false
 					})

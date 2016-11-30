@@ -64,11 +64,13 @@
 			},
 
 			editAlbum : function (data) {
+				$('#loader').modal('show')
 				this.$http.post(
 					this.$env.get('APP_URI') + 'admin/album/' 
 					+ this.selectedAlbum.id + '?data=' + data.param
 				).then(res => {
 					if(res.data.code == 0) {
+						$('#loader').modal('hide')
 						this.albumInstance.title = res.data.result.title
 						this.albumInstance.photos_count = res.data.result.photos_count
 
@@ -82,6 +84,7 @@
 						})
 					}
 				}).catch(err => {
+					$('#loader').modal('hide')
 					this.$root.$refs.notify.notify('Хадгалах явцад алдаа.',{
 						closeable : false
 					})
@@ -89,10 +92,12 @@
 			},
 
 			saveAlbum : function (data) {
+				$('#loader').modal('show')
 				this.$http.post(
 					this.$env.get('APP_URI') + 'admin/album?data=' + data.param
 				).then(res => {
 					if(res.data.code == 0) {
+						$('#loader').modal('hide')
 						this.albums.push(res.data.result)
 						this.showAlbumModify = false		
 						this.$root.$refs.notify.notify(res.data.message,{
@@ -100,6 +105,7 @@
 						})
 					}
 				}).catch(err => {
+					$('#loader').modal('hide')
 					this.$root.$refs.notify.notify('Хадгалах явцад алдаа.',{
 						closeable : false
 					})

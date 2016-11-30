@@ -32,12 +32,15 @@
 			},
 
 			editCountry : function (data) {
+				$('#loader').modal('show')
+
 				this.$http.post(
 					this.$env.get('APP_URI') + 'admin/country/' 
 					+ this.selectedCountry.id + '?data=' + data.param, 
 					data.formData
 				).then(res => {
 					if(res.data.code == 0) {
+						$('#loader').modal('hide')
 						this.countryInstance.name = res.data.country.name
 						this.countryInstance.flag_url = res.data.country.flag_url
 						this.showCountryModify = false		
@@ -46,6 +49,7 @@
 						})
 					}
 				}).catch(err => {
+					$('#loader').modal('hide')
 					this.$root.$refs.notify.notify('Хадгалах явцад алдаа.',{
 						closeable : false
 					})
@@ -53,19 +57,22 @@
 			},
 
 			saveCountry : function (data) {
+				$('#loader').modal('show')
+
 				this.$http.post(
 					this.$env.get('APP_URI') + 'admin/country?data=' + data.param, 
 					data.formData
 				).then(res => {
 					if(res.data.code == 0) {
+						$('#loader').modal('hide')
 						this.countries.push(res.data.country)
-
 						this.showCountryModify = false		
 						this.$root.$refs.notify.notify(res.data.message,{
 							closeable : false
 						})
 					}
 				}).catch(err => {
+					$('#loader').modal('hide')
 					this.$root.$refs.notify.notify('Хадгалах явцад алдаа.',{
 						closeable : false
 					})

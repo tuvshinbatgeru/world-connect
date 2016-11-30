@@ -39,12 +39,14 @@
 			},
 
 			editSchool : function (data) {
+				$('#loader').modal('show')
 				this.$http.post(
 					this.$env.get('APP_URI') + 'admin/school/' 
 					+ this.selectedSchool.id, 
 					data.formData
 				).then(res => {
 					if(res.data.code == 0) {
+						$('#loader').modal('hide')
 						this.schoolInstance.name = res.data.result.name
 						this.schoolInstance.country.name = data.country_name
 						this.schoolInstance.degrees = res.data.result.degrees
@@ -55,6 +57,7 @@
 						})
 					}
 				}).catch(err => {
+					$('#loader').modal('hide')
 					this.$root.$refs.notify.notify('Хадгалах явцад алдаа.',{
 						closeable : false
 					})
@@ -62,12 +65,13 @@
 			},
 
 			saveSchool : function (data) {
+				$('#loader').modal('show')
 				this.$http.post(
 					this.$env.get('APP_URI') + 'admin/school', 
 					data.formData
 				).then(res => {
 					if(res.data.code == 0) {
-
+						$('#loader').modal('hide')
 						var school = res.data.result
 						this.schools.push(school)
 						this.showSchoolModify = false		
@@ -76,6 +80,7 @@
 						})
 					}
 				}).catch(err => {
+					$('#loader').modal('hide')
 					this.$root.$refs.notify.notify('Хадгалах явцад алдаа.',{
 						closeable : false
 					})
