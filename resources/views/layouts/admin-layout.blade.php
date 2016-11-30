@@ -109,6 +109,19 @@
 	<core-notify v-ref:notify>
 	</core-notify>
 
+	<div id="loader" class="modal loader" data-easein="fadeIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="top: 20% !important">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Уншиж байна</h4>
+          </div>
+          <div class="modal-body">
+          	LOADING ...
+          </div>
+        </div>
+      </div>
+    </div>
+
 	@include('includes.admin-script')
 </body>
 </html>
