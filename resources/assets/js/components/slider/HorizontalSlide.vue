@@ -1,23 +1,23 @@
 <template>
-	<div class="Slide__Container" :style="'height:' + slideHeight + 'px'">
-	<div id="Horizontal__Slide"  class="Horizontal__Slide">
-		<button v-show="indexMuch()" @click="moveLeft()" class="white-arrow left">
-		</button>
+	<div :id="slideId" class="Slide__Container" :style="'height:' + slideHeight + 'px'">
+		<div :id="horizontalId"  class="Horizontal__Slide">
+			<button v-show="indexMuch()" @click="moveLeft()" :class="'left ' + this.arrowClass">
+			</button>
 
-	    <button v-show="(index * step + block) < items.length" @click="moveRight()" class="white-arrow right">
-	    </button>
-		<div class="Horizontal__Window" :style="'left:-' + moveLength + widthType +';' + 'width:'+ moveWidth + widthType">
-		    <div :style="'position:absolute;left: ' + slideWidth * $index + widthType +';' + 'width:' + moveWidth + widthType" class="Horizontal__Content" v-for="item in items">
-		    	<component :item="item" :is="item.context">
-		    		
-		    	</component>
-		    </div>
-    	</div>
-    	<div v-show="bullet == 1" class="bullet-nav">
-            <div :class="act == index ? 'active' : ''" @click="setIndex(act)" v-for="act in items.length">
-            </div>
-        </div>
-    </div>
+		    <button v-show="(index * step + block) < items.length" @click="moveRight()" :class="'right ' + this.arrowClass">
+		    </button>
+			<div class="Horizontal__Window" :style="'left:-' + moveLength + widthType +';' + 'width:'+ moveWidth + widthType">
+			    <div :style="'position:absolute;left: ' + slideWidth * $index + widthType +';' + 'width:' + moveWidth + widthType" class="Horizontal__Content" v-for="item in items">
+			    	<component :item="item" :is="item.context">
+			    		
+			    	</component>
+			    </div>
+	    	</div>
+	    	<div v-show="bullet == 1" class="bullet-nav">
+	            <div :class="act == index ? 'active' : ''" @click="setIndex(act)" v-for="act in items.length">
+	            </div>
+	        </div>
+	    </div>
     </div>
 </template>
 <script>
@@ -35,32 +35,48 @@
 			slideWidth : {
 				default: 258
 			},
+
 			slideHeight : {
 				default: 300
 			},
+
 			widthType : {
 				type: String,
 				default: 'px'
 			},
+
 			items: {
 
 			},
+
 			bullet: {
 				type : Number,
       			default : 1
-			}
+			},
+
+			arrowClass : {
+				type: String,
+				default: 'white-arrow'
+			},
 		},
 
 		data () {
 			return {
 				index : 0,
 				windowWidth : null,
+				slideId : {},
+				horizontalId : {}
 			}
 		},
 
+		created : function () {
+			this.slideId = this.$tools.newId()
+			this.horizontalId = this.$tools.newId()
+		},
+
 		ready : function () {
-		    Hammer(document.getElementsByClassName("Horizontal__Window")[0]).on("swipeleft", this.moveRight);
-		    Hammer(document.getElementsByClassName("Horizontal__Window")[0]).on("swiperight", this.moveLeft);
+		    Hammer(document.getElementById(this.slideId)).on("swipeleft", this.moveRight);
+		    Hammer(document.getElementById(this.slideId)).on("swiperight", this.moveLeft);
 
 		    $(window).resize(this.windowResize)
 		    this.windowResize()
@@ -68,7 +84,7 @@
 
 		methods : {
 			windowResize : function () {
-				this.windowWidth = $('.Horizontal__Slide').width()
+				this.windowWidth = $('#' + this.slideId).width()
 			},
 
 			setIndex(temp) {
