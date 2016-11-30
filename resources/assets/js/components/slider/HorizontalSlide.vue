@@ -1,5 +1,5 @@
 <template>
-	<div class="Slide__Container">
+	<div class="Slide__Container" :style="'height:' + slideHeight + 'px'">
 	<div id="Horizontal__Slide"  class="Horizontal__Slide">
 		<button v-show="indexMuch()" @click="moveLeft()" class="white-arrow left">
 		</button>
@@ -13,10 +13,8 @@
 		    	</component>
 		    </div>
     	</div>
-    	<div class="line-nav">
+    	<div v-show="bullet == 1" class="bullet-nav">
             <div :class="act == index ? 'active' : ''" @click="setIndex(act)" v-for="act in items.length">
-            	<hr>
-            	</hr>
             </div>
         </div>
     </div>
@@ -25,6 +23,7 @@
 <script>
 	import PrimaryPlanContext from './context/PrimaryPlanContext.vue'
 	import PrimarySlide from './context/PrimarySlide.vue'
+	import AlbumSlide from './context/AlbumSlide.vue'
 
 	export default {
 		props: {
@@ -35,6 +34,9 @@
 			slideWidth : {
 				default: 258
 			},
+			slideHeight : {
+				default: 300
+			},
 			widthType : {
 				type: String,
 				default: 'px'
@@ -42,6 +44,10 @@
 			items: {
 
 			},
+			bullet: {
+				type : Number,
+      			default : 1
+			}
 		},
 
 		data () {
@@ -109,14 +115,13 @@
 		},
 
 		components : {
-			PrimaryPlanContext, PrimarySlide
+			PrimaryPlanContext, PrimarySlide, AlbumSlide
 		}
 	}
 </script>
 <style lang="scss">
 .Slide__Container {
 	position: relative;
-	height: 475px;
 	width: 100%;
 	padding: 0px;
 	margin: 0px;
@@ -188,43 +193,36 @@
     	color: #eee;
     }
 }
-.line-nav {
+.bullet-nav {
 	position: absolute;
 	bottom: 10px;
 	text-align: center;
 	left: 0px;
 	right: 0px;
-	z-index: 10;
+	z-index: 20;
 	div {
 		display: inline-block;
         /* size of bullet elment */
-        width: 110px;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
         margin-right: 30px;
-        height: auto;
         overflow: hidden;
         cursor: pointer;
-		hr {
-	        -webkit-transition: all 300ms ease-in-out;
-			-moz-transition: all 300ms ease-in-out;
-			-ms-transition: all 300ms ease-in-out;
-			-o-transition: all 300ms ease-in-out;
-			transition: all 300ms ease-in-out;
-			margin: 5px 0px;
-			border-top: 2px solid #fff;
-		}
+        background-color: #fff;
+        opacity: 0.4;
+        -webkit-transition: all 300ms cubic-bezier(0.470, 0.000, 0.745, 0.715); 
+	    -moz-transition: all 300ms cubic-bezier(0.470, 0.000, 0.745, 0.715); 
+	    -o-transition: all 300ms cubic-bezier(0.470, 0.000, 0.745, 0.715); 
+        transition: all 300ms cubic-bezier(0.470, 0.000, 0.745, 0.715); /* easeInSine */
         &:hover {
-        	hr {
-        		border-top-color: #ff5500;
-        		border-width: 4px;
-        	}
+        	opacity: 0.8;
         }
         &:last-child {
         	margin-right: 0px;
         }
-	}
-	.active {
-		hr {
-		border-top-color: #ff5500;
+        &.active {
+        	opacity: 0.8;
 		}
 	}
 }

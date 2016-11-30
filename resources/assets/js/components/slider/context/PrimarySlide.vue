@@ -8,6 +8,7 @@
 				<div class="news-title">
 					<a :href="'/news/' + item.id">{{item.title}}</a>
 				</div>
+				<hr class="news-title-seperator"></hr>
 				<div class="news-description">
 					{{item.info[0].description}}
 				</div>
@@ -58,12 +59,16 @@
 .news-container {
 	position: absolute;
 	bottom: 80px;
-	width: 730px;
-	text-shadow: 0px 2px 6px #000000;
+	width: 650px;
+	height: 270px;
+	left: 0px;
+    right: 0px;
+    margin: 0 auto;
+    text-align: center;
+    text-shadow: 0px 0px 2px #000000;
 	.news-title {
-		margin: 10px 0px;
-		font-size: 20px;
-		font-weight: 800;	
+		font-size: 30px;
+    	font-weight: 400;
 		a {
 			color: #fff;
 			&:hover {
@@ -76,7 +81,10 @@
 		margin: 10px 0px;
 		font-size: 15px;
 	}
-	
+	.news-title-seperator {
+		margin: 0px;
+		border-top: 3px solid #fff;
+	}
 }
 .social-container {
 	top: 75px;

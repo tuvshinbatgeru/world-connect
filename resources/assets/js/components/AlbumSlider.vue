@@ -1,26 +1,24 @@
 <template>
-	<div class="feed-container mini">
-		<div class="feed-title">
-			Зургийн цомог
-		</div>
-		<div class="content-container">
-			<div id="container" class="margin-vertical">
-			</div>
+	<horizontal-slide :slide-width="230" :slide-height="350" width-type="px" :step="1" :items="albums" :bullet="0">
 
-			<div id="blueimp-gallery" class="blueimp-gallery">
-			    <div class="slides"></div>
-			    <h3 class="title"></h3>
-			    <a class="prev">‹</a>
-			    <a class="next">›</a>
-			    <a class="close">×</a>
-			    <a class="play-pause"></a>
-			    <ol class="indicator"></ol>
-			</div>
-
+	<div class="content-container">
+		<div id="container" class="margin-vertical">
 		</div>
+
+		<div id="blueimp-gallery" class="blueimp-gallery">
+		    <div class="slides"></div>
+		    <h3 class="title"></h3>
+		    <a class="prev">‹</a>
+		    <a class="next">›</a>
+		    <a class="close">×</a>
+		    <a class="play-pause"></a>
+		    <ol class="indicator"></ol>
+		</div>
+
 	</div>
 </template>
 <script>
+	import HorizontalSlide from './slider/HorizontalSlide.vue'
 	export default {
 		props : {
 			countryId : {
@@ -38,6 +36,7 @@
 
 		created : function () {
 			this.getAlbums()
+			
 		},
 
 		ready : function () {
@@ -91,6 +90,7 @@
 
             calcMasonry : function () {
             	var $items = this.getMasonryItems()
+            	this.setContext()
                 var msnry = this.masonryContainer.data('masonry');
 			    var itemSelector = msnry.options.itemSelector;
 			  	// hide by default
@@ -106,6 +106,15 @@
 			    msnry.appended( $item );
 			  });
             },
+            setContext : function () {
+                _.forEach(this.albums, function (obj) {
+                    obj.context = 'album-slide'
+                })
+            }
+		},
+
+		components : {
+			HorizontalSlide
 		}
 	}
 </script>
