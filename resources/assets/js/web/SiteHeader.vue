@@ -3,11 +3,6 @@
 		<div class="cntr-fluid">
 				<div class="wc-nav">
 					<ul>
-						<li class="active">
-							<a href="/">
-								Нүүр хуудас
-							</a>
-						</li>
 						<li>
 							<a>
 								Бидний тухай
@@ -32,28 +27,28 @@
 			<img :src="siteLogo" height="100" />
 		</div>
 		<hr class="header-seperator"></hr>
-		<div style="width: 100%;position: relative;">
+		<div class="sticky">
 			<div class="cntr-fluid">
 				<div class="wc-content-nav">
 					<ul>
-						<li @mouseover="mouseOver('country')" @mouseout="mouseOut()" class="active">
-							<a>Улсууд</a>
+						<li class="active">
+							<a>Нүүр хуудас</a>
+						</li>
+						<li @mouseover="mouseOver('country')" @mouseout="mouseOut()">
+							<a>Улсууд <i class="fa fa-sort-down"></i></a>
+						</li>
+						<li @mouseover="mouseOver('visa')" @mouseout="mouseOut()">
+							<a>Визний мэдээлэл <i class="fa fa-sort-down"></i></a>
 						</li>
 						<li @mouseover="mouseOver('schools')" @mouseout="mouseOut()">
 							<a>Сургуулиуд</a>
 						</li>
-
-						<li @mouseover="mouseOver('visa')" @mouseout="mouseOut()">
-							<a>Визний мэдээлэл</a>
-						</li>
-
 						<li @mouseover="mouseOver('english')" @mouseout="mouseOut()">
 							<a href="/study">Англи хэлний сургалт</a>
 						</li>
 						<li @mouseover="mouseOver('scholar')" @mouseout="mouseOut()">
 							<a href="/scholarship">Тэтгэлэгт хөтөлбөр</a>
 						</li>
-						
 						<li>
 							<a href="/information">Мэдээлэл</a>
 						</li>
@@ -107,6 +102,13 @@
 
 		created : function () {
 			this.getCountries()
+			$(window).scroll(function(){
+				var scroll = $(window).scrollTop();
+				if (scroll >= 115)
+					$('.sticky').addClass('fixed-header');
+				else
+					$('.sticky').removeClass('fixed-header');
+			});
 		},
 
 		methods : {
