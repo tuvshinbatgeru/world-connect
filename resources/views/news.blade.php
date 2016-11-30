@@ -19,7 +19,13 @@
 									Нийтэлсэн огноо 2016  11 сарын 28
 								</div>
 								<div class="col-xs-6 text-right">
-									<span class="facebook-share"> <i class="fa fa-facebook"></i> Share</span>
+									<div class="fb-share-button" 
+										data-href="http://192.168.1.6/news/1" 
+										data-layout="button_count">
+									</div>
+									<a class="twitter-share" href="https://twitter.com/intent/tweet?text={{$news->title}}&url=http://worldconnect.mn/news/{{$news->id}}"> <i class="fa fa-twitter"></i>Tweet
+									</a>
+									<!-- <span class="facebook-share"> <i class="fa fa-facebook"></i> Share</span> -->
 								</div>
 							</div>
 						</div>
@@ -71,13 +77,7 @@
 
 	</script>
 
-	<div class="fb-share-button" 
-		data-href="http://192.168.1.6/news/1" 
-		data-layout="button_count">
-	</div>
-
-	<a href="https://twitter.com/intent/tweet?text={{$news->title}}&url=http://worldconnect.mn/news/{{$news->id}}">Жиргэх
-	</a>
+	
 
 	</section>
 @stop
