@@ -1,13 +1,13 @@
 @extends('layouts.index-layout', ['currentView' => 'information-view'])
 @section('content') 
 	<section class="content" v-cloak>
-		<div class="cntr-fluid">
+		<div class="cntr-fluid margin-vertical">
 			<div class="feed-container mini">
 				<div class="feed-title">
 					Мэдээ, Мэдээлэлүүд
 				</div>
 
-				<div class="content-container no-hover" v-for="news in information">
+				<div class="content-container @{{ $index != 0 ? 'small' : ''}}" v-for="news in information">
 						<div class="cover-cntr">
 							<div class="cover">
 								<div class="cover-img">
