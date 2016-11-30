@@ -2,7 +2,7 @@
 @section('content') 
 	<section class="content" v-cloak>
 		<div style="width: 100%;">
-			<horizontal-slide :slide-width="100" width-type="%" :step="1" :items="items">
+			<horizontal-slide :slide-width="100" width-type="%" :step="1" :items="items" :slide-height="475">
 	                
 	    	</horizontal-slide>
 		</div>
@@ -10,24 +10,44 @@
 		<div class="white-full">
 			<div class="cntr-fluid">
 				<div class="row">
-					<div class="col-md-12 text-center card-title">
-						<i class="fa fa-address-card-o"></i> ЗУУЧЛАХ УЛС ОРНУУД
+					<div class="col-md-12 text-center ">
+						<div class="countries-ad">
+							<h2><i class="fa fa-globe"></i> Суралцуулах улсууд</h2>
+							<h3>
+								Бид таны цагийг хэмнэн, төгс цогц үйлчилгээг хурдан шуурхай үзүүлнэ
+							</h3>
+							<p>
+								Та гадаадад сурах хүсэл мөрөөдөлтэй хэдий ч яг аль улсад сурахаа шийдэж чадахгүй байна уу ? Тэгвэл таныг сонголт хийхэд манай компани туслах болно.
+							</p>
+						</div>
 					</div>
 				</div>
+			</div>
+		</div>
+		<!-- country card start -->
+		<div class="countries-background">
+			<div class="cntr-fluid">
 				<div class="row">
 					<div class="col-md-3" v-for="country in countries">
 						<div class="flip-card country">
 							<div class="cover">
-								<div class="cover-img">
-									<img class="vertical" :src="country.cover_url"/>
+								<div class="country-flag">
+									<img :src="country.flag_url" height="20" />
+								</div>
+								<div class="country-cover-image">
+									<div class="cover-img">
+										<img class="horizontal" :src="country.cover_url"/>
+									</div>
 								</div>
 								<div class="title">
-									<div class="globe">
+									<div class="globe" style="display: none;">
 										<i class="fa fa-globe"></i>
 									</div>
 									<a>@{{country.name}}</a>
-									<img src="{{asset('images/site/flip-card-arrow.png')}}" />
 								</div>
+								<a class="more">
+									ДЭЛГЭНРЭНГҮЙ
+								</a>
 								<div class="cover-content">
 									<div class="cover-content-background">
 										<div class="content-title">
@@ -51,104 +71,116 @@
 			</div>
 		</div>
 		<!-- country card end -->
-		<div class="cntr-fluid">	
-			<div class="row margin-vertical">
-				<div class="col-md-9">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="feed-container">
-								<div class="feed-title">
-									СҮҮЛД НЭМЭГДСЭН МЭДЭЭЛЭЛ
-								</div>
+		<!-- university card start -->
+		<div class="universities-background">
+			<div class="table--display">
+				<div class="table--cell line">
+					aaa	
+				</div>
+				<div class="universities table--cell">
+					<i class="fa fa-university"></i> Сургуулиуд	
+				</div>
+				<div class="table--cell line">
+					aaa
+				</div>
+			</div>
+			<div class="cntr-fluid">
+				<p>
+					Та бүхэн манай байгууллагыг сонгосноороо бидэнтэй хамтран ажилладаг олон улсад хүлээн зөвшөөрөгдсөн их дээд сургууль, коллеж, хэлний бэлтгэлийн төвүүдээс сонгон, хүссэн хямд зардлаар чанартай боловсрол эзэмших, суралцангаа аялж, амьдрах, боломжийг олгож байна.
+				</p>
+			</div>
+			<div class="cntr-fluid">
+				<div class="table--display">
+					<div class="table--cell" v-for="school in schools">
+						<div class="university">
+							<table>
+								<tr>
+									<td class="university-img">
+										<div class="cover-img">
+											<img class="fit" :src="school.logo_url"/>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="university-name table--cell">
+										@{{school.name}}
+									</td>
+								</tr>
+							</table>
 
-								<div class="content-container" :class="$index != 0 ? 'small' : ''" v-for="news in latestNews">
-									<div class="cover-cntr">
-										<div class="cover">
-											<div class="cover-img">
-												<img class="horizontal" :src="news.cover_url"/>
-											</div>
-										</div>
-									</div>
-									<div class="content">
-										<div class="content-title">
-											@{{news.title}}
-											<label class="date">
-												@{{news.created_at | moment 'from'}}
-											</label>
-										</div>
-										<div class="content-description">
-											@{{news.info[0].description}}
-										</div>
-										<div class="content-info">
-											<div class="row">
-												<div class="col-xs-6">
-													<span class="share social-share facebook">
-														SHARE
-													</span>
-													<span class="tweet social-share twitter">
-														TWEET
-													</span>
-												</div>
-												<div class="col-xs-6 text-right">
-													<span class="view">
-														<i class="fa fa-eye"></i> @{{news.visit_count}}
-													</span>
-													<span class="news-type">
-														@{{news.type | newsFilter}}
-													</span>
-												</div>	
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-12">
-							<album-slider></album-slider>
 						</div>
 					</div>
 				</div>
+			</div>
+		</div>
+		<!-- university card end -->
+		<!-- news feed start -->
+		<div class="news-feed-background">
+			<div class="cntr-fluid">
+				<h3>
+					СҮҮЛД НЭМЭГДСЭН МЭДЭЭЛЭЛ
+				</h3>
+				<h5>
+					Тэтгэлэг, виз, сургуультай холбоотой мэдээлэл
+				</h5>
+				<hr></hr>
+				<div class="row">
+					<div :class="$index/2 == 0 ? 'col-md-7' : 'col-md-5'" v-for="news in latestNews" style="margin-bottom:15px;">
+						<div class="news-item">
+							<div class="cover-img">
+								<img class="horizontal" :src="news.cover_url"/>
+							</div>
+							<div class="news">
+								<div class="news-title">
+									@{{news.title}}
+								</div>
 
-				<div class="col-md-3">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="feed-container mini">
-								<div class="feed-title">
-									Сургуулиуд
-								</div>
-								<div class="university" v-for="school in schools">
-									<div class="table--display">
-										<div class="university-img table--cell">
-											<div class="cover-img">
-												<img class="horizontal" :src="school.logo_url"/>
-											</div>
-										</div>
-										<div class="university-name table--cell">
-											@{{school.name}}
-										</div>
-									</div>
-								</div>
-								<div class="all-university">
-									<a class="news-type">
-										БУСАД СУРГУУЛИУД
-									</a>
+								<div class="news-brief">
+									@{{news.info[0].description}}
 								</div>
 							</div>
 						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- news feed end -->
+		<!-- album start -->
 
-						<div class="col-md-12 margin-vertical">
+		<div class="album-background">
+			<div class="cntr-fluid">
+				<h3>
+					ТАНЫ ТЭМҮҮЛЭЛ БИДНИЙ АМЖИЛТ
+				</h3>
+				<div class="description">
+					Америк, Австрали, Канад зэрэг улсуудруу явсан оюутан залуучууд фото албум
+				</div>
+			</div>
+			<div class="album-container">
+				<album-slider></album-slider>
+			</div>
+		</div>
+
+		<!-- album end -->
+
+
+		<div class="cntr-fluid">	
+			<div class="row margin-vertical">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-3 margin-vertical">
 							<div class="feed-container mini">
 								<div class="feed-title">
 									Сошиал хуудас
 								</div>
 								<div style="padding: 28px 26px;">
-									<div class="fb-page" data-href="https://www.facebook.com/worldconnect.international" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/facebook" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/facebook">Facebook</a></blockquote>
-									</div>
+									<!-- <div class="fb-page" data-href="https://www.facebook.com/worldconnect.international" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/facebook" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/facebook">Facebook</a></blockquote>
+									</div> -->
 								</div>
 							</div>
 						</div>
 
-						<div class="col-md-12">
+						<div class="col-md-3">
 							<div class="feed-container mini">
 								<div class="feed-title">
 									Валютын ханш
