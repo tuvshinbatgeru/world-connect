@@ -6,7 +6,7 @@
 </head>
 <body>
 	<div class="wrapper">
-	    <div class="sidebar" data-color="purple" data-image="/images/sidebar-5.jpg">
+	    <div class="sidebar" data-color="orange">
 	    	<div class="sidebar-wrapper">
 	            <div class="logo">
 	                <a href="http://worldconnect.mn" class="simple-text">
