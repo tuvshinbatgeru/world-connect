@@ -7,8 +7,6 @@
 					Илэрцүүд
 				</div>
 
-				<gcse:searchresults-only></gcse:searchresults-only>
-				
 				<script>
 				  (function() {
 				    var cx = '007178342844275873977:c0ufdbfs1zk';
@@ -20,7 +18,8 @@
 				    s.parentNode.insertBefore(gcse, s);
 				  })();
 				</script>
-				
+
+				<gcse:searchresults-only resultsUrl="http://www.worldconnect.mn/search"></gcse:searchresults-only>
 			</div>
 		</div>
 	</section>
