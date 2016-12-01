@@ -9,6 +9,11 @@
 							</a>
 						</li>
 						<li>
+							<a href="#albumContainer" @click="$root.anchorSmooth($event)">
+								Зургийн цомог
+							</a>
+						</li>
+						<li>
 							<a>
 								Холбоо барих
 							</a>
