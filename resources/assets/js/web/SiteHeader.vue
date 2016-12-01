@@ -21,7 +21,12 @@
 						<li>
 							<div class="search-input">
 								<i class="fa fa-search"></i>
-								<input placeholder="Хайлт хийх ..." type="text" />
+								<form method="GET" action="/search">
+									<input placeholder="Хайлт хийх ..." 
+									   type="text" 
+									   name="q"
+									   @keyup.enter="submit"/>
+								</form>
 							</div>
 						</li>
 					</ul>
