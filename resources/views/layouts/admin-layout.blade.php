@@ -63,8 +63,45 @@
 	                            </a>
 	                        </li>
 	                    </ul> -->
+	                    <div id="password" class="modal password" data-easein="fadeIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="top: 20% !important">
+					      <div class="modal-dialog" style="width: 400px;">
+					        <div class="modal-content">
+					          <div class="modal-header">
+					          	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					            <h4 class="modal-title" id="myModalLabel">Нууц үг солих</h4>
+					          </div>
+					          <div class="modal-body">
+					          	<form class="form-group">
+					          		<div class="row text-center">
+					          			<label> Хуучин нууц үг
+					          				<input class="form-control" v-model="user.oldPass" type="password" name="oldpassword" autofocus="true">
+					          			</label>
+					          		</div>
+					          		<div class="row text-center">
+						          		<label> Шинэ нууц үг
+						          			<input class="form-control" v-model="user.newPass" type="password" name="newspassword">
+						          		</label>
+					          		</div>
+					          		<div class="row text-center">
+						          		<label> Давтан оруулна уу
+							          		<input class="form-control" v-model="user.verifyPass" type="password" name="verifypassword">
+							          	</label>
+					          		</div>
+					          	</form>
+					          </div>
+					          <div class="modal-footer">
+								<a @click="setNewPassword()" style="margin-right: 10px;" class="btn btn-info btn-fill btn-warning pull-right">Хадгалах</a>
+					          </div>
+					        </div>
+					      </div>
+					    </div>
 
 	                    <ul class="nav navbar-nav navbar-right">
+	                    	<li>
+	                    		<a @click="passwordModal()">
+	                    			<i class="fa fa-cogs"></i>Нууц үгээ солих	
+	                    		</a>
+	                    	</li>
 	                        <li>
 	                           <a href="/logout">
 	                             	<i class="fa fa-sign-out"></i>  Гарах
