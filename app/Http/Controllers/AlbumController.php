@@ -32,14 +32,15 @@ class AlbumController extends Controller
                       ->latest();
 
         if($country != 0) {
-            $query = $query->where('country_id', $country);
+            $query = $query->orderBy('country_id', $country);
         }
-
-        $query = $query->limit(10)->get();
+        else {
+            $query = $query->latest();
+        }
 
         return Response::json([
             'code' => 0,
-            'result' => $query,
+            'result' => $query->get(),
         ]);
     }
 
