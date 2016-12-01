@@ -94,7 +94,7 @@
 
 				</country-scholarship>
 				
-				<div class="col-md-12 col-xs-12 no-padding margin-vertical">
+				<div class="col-md-12 col-xs-12 no-padding margin-vertical" id="albumContainer">
 					<album-slider :country-id="{{$country->id}}">
 						
 					</album-slider>

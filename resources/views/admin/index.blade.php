@@ -121,6 +121,7 @@
                     <input type="text" name="email" placeholder="Нэвтрэх мэйл хаяг">
                     <input type="password" name="password" placeholder="Нууц үг">
                     <button>Нэвтрэх</button>
+                    <a>Нууц үгээ сэргээх</a>
                 </form>
                 <div class="flash-message">
                     @foreach (['danger', 'warning', 'success', 'info'] as $msg)
@@ -133,14 +134,13 @@
                 </div>
             </div>
         </div>
-
+        
         <!-- <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title m-b-md">
                     World Connect
                 </div>
-
-
+                
                 <form method="POST" action="/login" class="form-group">
                     {{ csrf_field() }}
                     <input type="text" name="email" class="form-control">
