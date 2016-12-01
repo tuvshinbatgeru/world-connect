@@ -66,7 +66,7 @@
 	position: fixed;
 	max-width: 300px;
 	display: table;
-	z-index: 100;
+	z-index: 1051;
 	border-spacing: 0 5px;
 	.core--notify--row {
 		display: table-row;
