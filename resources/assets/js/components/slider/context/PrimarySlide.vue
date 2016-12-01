@@ -69,6 +69,8 @@
 	.news-title {
 		font-size: 42px;
     	font-weight: 400;
+    	line-height: 1;
+	    margin-bottom: 15px;
 		a {
 			color: #fff;
 			&:hover {
