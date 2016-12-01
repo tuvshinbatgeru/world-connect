@@ -140,6 +140,14 @@
   opacity: 0.8;
   display: none;
 }
+.blueimp-gallery > .title {
+  top: initial;
+  right: 0;
+  left: 0;
+  display: block;
+  text-align: center;
+  bottom: 128px;
+}
 .blueimp-gallery > .close {
   padding: 15px;
   right: 15px;
