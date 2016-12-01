@@ -15,7 +15,10 @@ Route::get('/', function () {
     return view('welcome')->with('menu', 'main');
 });
 
+Route::get('/search', 'SearchController@search');
 Route::post('/login', 'AuthController@login');
+Route::get('/password', 'AuthController@checkPassword');
+Route::post('/password', 'AuthController@changePassword');
 Route::get('/logout', 'AuthController@logout');
 
 Route::get('/login', function () {
