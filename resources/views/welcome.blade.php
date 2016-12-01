@@ -18,10 +18,10 @@
 						<div class="countries-ad">
 							<h2><i class="fa fa-globe"></i> УЛСУУД</h2>
 							<h4>
-								ЗӨВ СОНГОЛТ АМЖИЛТЫН ҮНДЭС
+								ТАНЫ АМЖИЛТ БИДНИЙ ЗОРИЛГО
 							</h4>
 							<p>
-								Дэлхийн өндөр хөгжилтэй улс орнуудад суралцах, аялах, амьдрах боломжийг<br/> "World Connect" Олон Улсын Боловсролын Агентлаг таньд санал болгож байна.
+								Бид таны цагийг хэмнэн бүрэн цогц үйлчилгээг үзүүлнэ.
 							</p>
 						</div>
 					</div>
@@ -140,13 +140,13 @@
 		<div class="album-background">
 			<div class="cntr-fluid">
 				<h3>
-					ТАНЫ АМЖИЛТ, БИДНИЙ ЗОРИЛГО
+					ЗӨВ СОНГОЛТ АМЖИЛТЫН ҮНДЭС
 				</h3>
 				<div class="description">
 					“World Connect” агентлагийг сонгон үйлчлүүлсэн оюутан залуусын зургийн цомог
 				</div>
 			</div>
-			<div class="album-container">
+			<div class="album-container" id="albumContainer">
 				<div class="cntr-fluid">
 					<album-slider></album-slider>
 				</div>
